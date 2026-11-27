@@ -118,10 +118,10 @@
 
     /* Card Flip & Interactive States */
     .clue-card {
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, border-color 0.18s ease;
     }
     .clue-card:hover:not(.locked) {
-      transform: translateY(-3px) scale(1.015);
+      transform: translateY(-2px) scale(1.015);
     }
     .clue-card:active:not(.locked) {
       transform: scale(0.97);
@@ -142,11 +142,11 @@
     }
 
     @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.88) translateY(10px); }
+      0% { opacity: 0; transform: scale(0.9) translateY(8px); }
       100% { opacity: 1; transform: scale(1) translateY(0); }
     }
     .animate-pop {
-      animation: popIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: popIn 0.24s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
     @keyframes shakeGentle {
@@ -170,7 +170,7 @@
       border-color: #E07A5F !important;
     }
 
-    /* Custom Scrollbars for Teacher Control Center */
+    /* Custom Scrollbars */
     .custom-scroll::-webkit-scrollbar {
       width: 8px;
       height: 8px;
@@ -218,7 +218,7 @@
       position: absolute;
       transform: translate(-50%, -50%);
       z-index: 10;
-      transition: opacity 0.12s ease, transform 0.16s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: opacity 0.1s ease, transform 0.14s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
   </style>
 </head>
@@ -384,7 +384,7 @@
     </header>
 
     <main class="max-w-6xl w-full mx-auto my-auto py-3 grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
-      <!-- STEP 1: Choose Detective Mode (3 Modes: Word, Sentence, Flashlight) -->
+      <!-- STEP 1: Choose Detective Mode (Word, Sentence, Flashlight, Memory) -->
       <div class="lg:col-span-6 bg-detCream border-4 border-detBrown rounded-3xl p-4 sm:p-5 shadow-card flex flex-col justify-between">
         <div>
           <div class="flex items-center gap-2 mb-3">
@@ -392,34 +392,33 @@
             <h3 class="font-display text-xl sm:text-2xl font-bold text-detBrown">CHOOSE INVESTIGATION MODE</h3>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-4">
-            <button id="select-mode-word" onclick="SetupUI.selectGameMode('word')" class="det-btn text-left p-3.5 rounded-2xl border-4 border-detBrown bg-detMustard/35 transition-all flex flex-col justify-between">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-4">
+            <button id="select-mode-word" onclick="SetupUI.selectGameMode('word')" class="det-btn text-left p-3 rounded-2xl border-4 border-detBrown bg-detMustard/35 transition-all flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center justify-between mb-1">
                   <span class="text-2xl">🖼️</span>
                   <span id="badge-mode-word" class="bg-detSage text-white text-[10px] font-black px-2 py-0.5 rounded-full border border-detBrown">SELECTED</span>
                 </div>
                 <div class="font-display text-base sm:text-lg font-bold text-detNavy leading-tight">WORD DETECTIVE</div>
               </div>
-              <p class="text-[11px] sm:text-xs font-bold text-detBrown/85 mt-1.5">Memorize & match picture or word cards!</p>
+              <p class="text-[11px] sm:text-xs font-bold text-detBrown/85 mt-1">Memorize & match picture or word cards!</p>
             </button>
 
-            <button id="select-mode-sentence" onclick="SetupUI.selectGameMode('sentence')" class="det-btn text-left p-3.5 rounded-2xl border-4 border-detBrown/35 bg-detBeige/60 transition-all flex flex-col justify-between">
+            <button id="select-mode-sentence" onclick="SetupUI.selectGameMode('sentence')" class="det-btn text-left p-3 rounded-2xl border-4 border-detBrown/35 bg-detBeige/60 transition-all flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center justify-between mb-1">
                   <span class="text-2xl">🧩</span>
                   <span id="badge-mode-sentence" class="hidden bg-detSage text-white text-[10px] font-black px-2 py-0.5 rounded-full border border-detBrown">SELECTED</span>
                 </div>
                 <div class="font-display text-base sm:text-lg font-bold text-detNavy leading-tight">SENTENCE DETECTIVE</div>
               </div>
-              <p class="text-[11px] sm:text-xs font-bold text-detBrown/85 mt-1.5">Rebuild sentences from shuffled word tiles!</p>
+              <p class="text-[11px] sm:text-xs font-bold text-detBrown/85 mt-1">Rebuild sentences from shuffled word tiles!</p>
             </button>
 
-            <button id="select-mode-flashlight" onclick="SetupUI.selectGameMode('flashlight')" class="det-btn text-left p-3.5 rounded-2xl border-4 border-detBrown/35 bg-detNavy text-white transition-all flex flex-col justify-between relative overflow-hidden">
+            <button id="select-mode-flashlight" onclick="SetupUI.selectGameMode('flashlight')" class="det-btn text-left p-3 rounded-2xl border-4 border-detBrown/35 bg-detNavy text-white transition-all flex flex-col justify-between relative overflow-hidden">
               <div>
-                <div class="flex items-center justify-between mb-1.5">
-                  <!-- Night Flashlight Illustration SVG -->
-                  <svg class="w-8 h-8 shrink-0" viewBox="0 0 64 64" aria-hidden="true">
+                <div class="flex items-center justify-between mb-1">
+                  <svg class="w-7 h-7 shrink-0" viewBox="0 0 64 64" aria-hidden="true">
                     <circle cx="44" cy="20" r="14" fill="#FFF3A1" opacity="0.35"/>
                     <polygon points="34,28 58,8 62,24" fill="#FFF3A1" opacity="0.7"/>
                     <g transform="rotate(35 24 40)">
@@ -431,7 +430,18 @@
                 </div>
                 <div class="font-display text-base sm:text-lg font-bold text-detMustard leading-tight">FLASHLIGHT DETECTIVES</div>
               </div>
-              <p class="text-[11px] sm:text-xs font-bold text-detCream/90 mt-1.5">Find the hidden clues in the dark!</p>
+              <p class="text-[11px] sm:text-xs font-bold text-detCream/90 mt-1">Find the hidden clues in the dark!</p>
+            </button>
+
+            <button id="select-mode-memory" onclick="SetupUI.selectGameMode('memory')" class="det-btn text-left p-3 rounded-2xl border-4 border-detBrown/35 bg-detBlue/20 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-2xl">🃏</span>
+                  <span id="badge-mode-memory" class="hidden bg-detSage text-white text-[10px] font-black px-2 py-0.5 rounded-full border border-detBrown">SELECTED</span>
+                </div>
+                <div class="font-display text-base sm:text-lg font-bold text-detNavy leading-tight">MEMORY GAME</div>
+              </div>
+              <p class="text-[11px] sm:text-xs font-bold text-detBrown/85 mt-1">Flip & match pairs across dynamic grids!</p>
             </button>
           </div>
         </div>
@@ -457,19 +467,21 @@
               </select>
             </div>
             <div>
-              <label class="block text-xs font-black tracking-wider text-detBrown mb-1">Cards / Clues Count</label>
+              <label class="block text-xs font-black tracking-wider text-detBrown mb-1">Entries to Use (Unlimited)</label>
               <select id="setup-item-count" onchange="Store.updateSetting('questionCount', Number(this.value))" class="w-full bg-detCream border-2 border-detBrown rounded-xl px-2.5 py-1.5 font-bold text-detNavy text-sm">
-                <option value="4">4 Items</option>
-                <option value="6">6 Items</option>
-                <option value="8">8 Items</option>
-                <option value="10">10 Items</option>
-                <option value="12">12 Items</option>
-                <option value="99">All Items in Set</option>
+                <option value="9999">ALL Entries in Set</option>
+                <option value="4">4 Entries</option>
+                <option value="6">6 Entries</option>
+                <option value="8">8 Entries</option>
+                <option value="10">10 Entries</option>
+                <option value="15">15 Entries</option>
+                <option value="20">20 Entries</option>
+                <option value="30">30 Entries</option>
               </select>
             </div>
           </div>
 
-          <!-- Flashlight Sub-Mode Selector (Visible when Flashlight Detectives is chosen) -->
+          <!-- Flashlight Sub-Mode Selector -->
           <div id="setup-flashlight-options" class="hidden pt-2 border-t-2 border-detBrown/20 space-y-2">
             <div class="text-xs font-black text-detNavy">🔦 Flashlight Investigation Type:</div>
             <div class="grid grid-cols-2 gap-2">
@@ -513,7 +525,7 @@
           <!-- Single Player Config -->
           <div id="config-single" class="bg-detBeige/80 border-2 border-detBrown/30 rounded-2xl p-4 space-y-3">
             <label class="block text-xs font-black tracking-wider text-detBrown">Detective Name</label>
-            <input id="input-player-name" type="text" maxlength="24" value="Detective Alex" placeholder="Enter student name..." class="preserve-case w-full bg-detCream border-3 border-detBrown rounded-xl px-3.5 py-2.5 font-bold text-detNavy text-base focus:outline-none focus:border-detBlue" />
+            <input id="input-player-name" type="text" maxlength="32" value="Player 1" placeholder="Enter student name..." class="preserve-case w-full bg-detCream border-3 border-detBrown rounded-xl px-3.5 py-2.5 font-bold text-detNavy text-base focus:outline-none focus:border-detBlue" />
             <p class="text-xs font-bold text-detBrown/80">Great for individual iPad practice or single-student Smartboard turns!</p>
           </div>
 
@@ -522,11 +534,11 @@
             <div class="grid grid-cols-2 gap-2.5">
               <div>
                 <label class="block text-xs font-black text-detBlue mb-1">🔵 Team 1 (Left — Dusty Blue)</label>
-                <input id="input-team1-name" type="text" maxlength="20" value="Detective Blue" class="preserve-case w-full bg-detCream border-3 border-detBlue rounded-xl px-3 py-1.5 font-bold text-detNavy text-sm" />
+                <input id="input-team1-name" type="text" maxlength="24" value="Detective Blue" class="preserve-case w-full bg-detCream border-3 border-detBlue rounded-xl px-3 py-1.5 font-bold text-detNavy text-sm" />
               </div>
               <div>
                 <label class="block text-xs font-black text-detCoral mb-1">🟠 Team 2 (Right — Warm Orange/Mustard)</label>
-                <input id="input-team2-name" type="text" maxlength="20" value="Detective Gold" class="preserve-case w-full bg-detCream border-3 border-detMustard rounded-xl px-3 py-1.5 font-bold text-detNavy text-sm" />
+                <input id="input-team2-name" type="text" maxlength="24" value="Detective Gold" class="preserve-case w-full bg-detCream border-3 border-detMustard rounded-xl px-3 py-1.5 font-bold text-detNavy text-sm" />
               </div>
             </div>
             <div class="bg-detCream/90 border-2 border-detBrown/25 rounded-xl p-2.5 text-xs font-bold text-detBrown">
@@ -543,7 +555,7 @@
   </section>
 
   <!-- ===================================================================== -->
-  <!-- SCREEN 3A: SINGLE PLAYER GAMEPLAY (Word, Sentence & Flashlight)        -->
+  <!-- SCREEN 3A: SINGLE PLAYER GAMEPLAY                                     -->
   <!-- ===================================================================== -->
   <section id="screen-game-single" class="screen hidden w-full h-full bg-workspace flex flex-col justify-between p-2.5 sm:p-4 lg:p-5 overflow-hidden">
     <header id="single-hud-header" class="w-full max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 bg-detCream border-3 border-detBrown rounded-2xl px-3 py-2 sm:px-4 sm:py-2.5 shadow-sm shrink-0">
@@ -570,7 +582,7 @@
       </div>
     </header>
 
-    <div id="single-prompt-bar" class="w-full max-w-6xl mx-auto my-2 bg-detMustard/30 border-3 border-detBrown rounded-2xl px-4 py-2 sm:py-2.5 flex flex-wrap items-center justify-between gap-2 shrink-0">
+    <div id="single-prompt-bar" class="w-full max-w-7xl mx-auto my-2 bg-detMustard/30 border-3 border-detBrown rounded-2xl px-4 py-2 sm:py-2.5 flex flex-wrap items-center justify-between gap-2 shrink-0">
       <div class="flex items-center gap-2.5 flex-1 min-w-[200px]">
         <span id="single-prompt-icon" class="text-2xl sm:text-3xl">👀</span>
         <div>
@@ -578,10 +590,10 @@
           <div id="single-prompt-main" class="font-display text-lg sm:text-2xl font-bold text-detNavy leading-tight">Study the clues carefully!</div>
         </div>
       </div>
-      <div id="single-prompt-actions" class="flex items-center gap-2"></div>
+      <div id="single-prompt-actions" class="flex flex-wrap items-center gap-2"></div>
     </div>
 
-    <main id="single-game-stage" class="flex-1 w-full max-w-7xl mx-auto overflow-y-auto custom-scroll flex items-center justify-center p-1 sm:p-2 relative"></main>
+    <main id="single-game-stage" class="flex-1 w-full max-w-7xl mx-auto overflow-y-auto custom-scroll flex flex-col items-center justify-center p-1 sm:p-2 relative"></main>
   </section>
 
   <!-- ===================================================================== -->
@@ -633,10 +645,10 @@
 
         <div id="t1-prompt-bar" class="bg-detCream border-2 border-detBrown rounded-xl px-3 py-1.5 my-1.5 flex items-center justify-between gap-2 shrink-0">
           <div id="t1-prompt-text" class="font-display text-sm sm:text-lg font-bold text-detNavy leading-snug"></div>
-          <div id="t1-prompt-extra" class="shrink-0"></div>
+          <div id="t1-prompt-extra" class="shrink-0 flex items-center gap-1"></div>
         </div>
 
-        <div id="t1-stage" class="flex-1 overflow-hidden flex items-center justify-center p-0.5 relative"></div>
+        <div id="t1-stage" class="flex-1 overflow-hidden flex flex-col items-center justify-center p-0.5 relative"></div>
       </div>
 
       <!-- TEAM 2: RIGHT SIDE (WARM MUSTARD / ORANGE THEME) -->
@@ -662,10 +674,10 @@
 
         <div id="t2-prompt-bar" class="bg-detCream border-2 border-detBrown rounded-xl px-3 py-1.5 my-1.5 flex items-center justify-between gap-2 shrink-0">
           <div id="t2-prompt-text" class="font-display text-sm sm:text-lg font-bold text-detNavy leading-snug"></div>
-          <div id="t2-prompt-extra" class="shrink-0"></div>
+          <div id="t2-prompt-extra" class="shrink-0 flex items-center gap-1"></div>
         </div>
 
-        <div id="t2-stage" class="flex-1 overflow-hidden flex items-center justify-center p-0.5 relative"></div>
+        <div id="t2-stage" class="flex-1 overflow-hidden flex flex-col items-center justify-center p-0.5 relative"></div>
       </div>
     </main>
   </section>
@@ -701,10 +713,10 @@
         <button onclick="App.goToSetup()" class="det-btn bg-detMustard text-detBrown border-3 border-detBrown rounded-2xl py-3 px-4 shadow-btn font-display text-base sm:text-lg font-bold">
           🎯 NEW GAME
         </button>
-        <button onclick="App.openTeacherCenter()" class="det-btn bg-detBeige text-detBrown border-3 border-detBrown rounded-2xl py-3 px-4 shadow-btn font-display text-base font-bold">
+        <button onclick="App.openTeacherCenter()" class="det-btn bg-detBeige text-detBrown border-3 border-detBrown rounded-2xl py-3 px-4 shadow-btn font-display text-base sm:text-lg font-bold">
           🗂️ TEACHER HUB
         </button>
-        <button onclick="App.showScreen('MENU')" class="det-btn bg-detCream text-detNavy border-3 border-detBrown rounded-2xl py-3 px-4 shadow-btn font-display text-base font-bold">
+        <button onclick="App.showScreen('MENU')" class="det-btn bg-detCream text-detNavy border-3 border-detBrown rounded-2xl py-3 px-4 shadow-btn font-display text-base sm:text-lg font-bold">
           🏠 MAIN MENU
         </button>
       </div>
@@ -729,11 +741,11 @@
       <div class="bg-detCream border-4 border-detBrown rounded-3xl p-5 shadow-card">
         <div class="flex items-center gap-3 mb-2">
           <span class="text-3xl">🖼️</span>
-          <h3 class="font-display text-2xl font-bold text-detNavy">1. Word & Sentence Detectives</h3>
+          <h3 class="font-display text-2xl font-bold text-detNavy">1. Word, Sentence & Memory</h3>
         </div>
         <ul class="space-y-2 text-sm sm:text-base font-bold text-detBrown">
-          <li>👀 <b>Memorize:</b> Study cards or sentences—exact teacher letter casing and punctuation are always preserved.</li>
-          <li>🔍 <b>Investigate:</b> Tap hidden matching cards or assemble shuffled word tiles into sentences.</li>
+          <li>👀 <b>Unlimited Entries:</b> Add any number of words, sentences, or pairs—exact teacher letter casing and punctuation are always preserved.</li>
+          <li>🃏 <b>Dynamic Grids & Pages:</b> Cards and word tiles resize automatically and paginate smoothly for small or large sets without losing progress.</li>
         </ul>
       </div>
 
@@ -743,7 +755,7 @@
           <h3 class="font-display text-2xl font-bold text-detNavy">2. Flashlight Detectives</h3>
         </div>
         <ul class="space-y-2 text-sm sm:text-base font-bold text-detBrown">
-          <li>🌑 <b>Dark Room Search:</b> Move mouse or drag your finger to shine a spotlight over scattered clues.</li>
+          <li>🌑 <b>Dark Room Search:</b> Move mouse or drag your finger to shine a spotlight over scattered vocabulary or sentence clues.</li>
           <li>👆 <b>Illuminate First:</b> Only clues revealed inside the light can be tapped to check your answer!</li>
         </ul>
       </div>
@@ -754,7 +766,7 @@
           <h3 class="font-display text-2xl font-bold text-detNavy">3. Split-Screen Team Mode</h3>
         </div>
         <ul class="space-y-2 text-sm sm:text-base font-bold text-detBrown">
-          <li>🔵🟠 <b>Simultaneous Play:</b> Team 1 (left) and Team 2 (right) play at the same time with independent flashlights, card layouts, timers, and scores.</li>
+          <li>🔵🟠 <b>Simultaneous Play:</b> Team 1 (left) and Team 2 (right) play at the same time with independent flashlights, card shuffles, timers, and scores.</li>
           <li>🏆 <b>Winner Rule:</b> Most matched/solved clues wins (with time tiebreaker / <b>IT'S A DRAW!</b>).</li>
         </ul>
       </div>
@@ -1038,7 +1050,7 @@
       const defaultSettings = {
         memorizeTime: 15,
         challengeTimer: 0,
-        questionCount: 6,
+        questionCount: 9999, // Unlimited by default
         cardDisplayMode: 'both', // 'both' | 'picture' | 'word'
         maxAttempts: 2, // 0 = unlimited, 1, 2, 3
         randomizeCards: true,
@@ -1048,11 +1060,10 @@
         pointsCorrect: 10,
         pointsPenalty: 0,
         difficulty: 'normal',
-        // Flashlight Detectives Settings
         flashlightSize: 'medium', // 'small' | 'medium' | 'large'
-        flashlightBrightness: 0.92, // 0.5 to 1.0
-        flashlightSoftEdge: true, // true = soft feathered, false = sharper beam
-        flashlightSensitivity: 1.0, // 0.6 to 1.5
+        flashlightBrightness: 0.92,
+        flashlightSoftEdge: true,
+        flashlightSensitivity: 1.0,
         flashlightSound: false,
         sentenceSearchMode: 'sequential' // 'sequential' | 'free'
       };
@@ -1154,7 +1165,7 @@
 
       async function saveAll() {
         try {
-          localStorage.setItem('ed_settings_v2', JSON.stringify(state.settings));
+          localStorage.setItem('ed_settings_v3', JSON.stringify(state.settings));
         } catch (e) {}
 
         if (!db) await openDB();
@@ -1185,7 +1196,7 @@
 
       async function loadAll() {
         try {
-          const savedSettings = localStorage.getItem('ed_settings_v2') || localStorage.getItem('ed_settings_v1');
+          const savedSettings = localStorage.getItem('ed_settings_v3') || localStorage.getItem('ed_settings_v2') || localStorage.getItem('ed_settings_v1');
           if (savedSettings) {
             state.settings = { ...defaultSettings, ...JSON.parse(savedSettings) };
           }
@@ -1241,7 +1252,6 @@
             state.settings.pointsPenalty = 0;
             state.settings.showHints = true;
             state.settings.flashlightSize = 'large';
-            state.settings.questionCount = 4;
           } else if (level === 'normal') {
             state.settings.memorizeTime = 15;
             state.settings.maxAttempts = 2;
@@ -1249,7 +1259,6 @@
             state.settings.pointsPenalty = 0;
             state.settings.showHints = true;
             state.settings.flashlightSize = 'medium';
-            state.settings.questionCount = 6;
           } else if (level === 'hard') {
             state.settings.memorizeTime = 10;
             state.settings.maxAttempts = 1;
@@ -1257,7 +1266,6 @@
             state.settings.pointsPenalty = 5;
             state.settings.showHints = false;
             state.settings.flashlightSize = 'small';
-            state.settings.questionCount = 8;
           }
           saveAll();
         }
@@ -1416,10 +1424,10 @@
     };
 
     /* =========================================================================
-     * 6. SETUP SCREEN CONTROLLER (Word, Sentence & Flashlight Detectives)
+     * 6. SETUP SCREEN CONTROLLER (Word, Sentence, Flashlight & Memory)
      * ========================================================================= */
     const SetupUI = {
-      gameMode: 'word', // 'word' | 'sentence' | 'flashlight'
+      gameMode: 'word', // 'word' | 'sentence' | 'flashlight' | 'memory'
       flashlightSubmode: 'word', // 'word' | 'sentence'
       playMode: 'single', // 'single' | 'team'
 
@@ -1427,34 +1435,28 @@
         AudioFX.click();
         this.gameMode = mode;
 
-        const wBtn = document.getElementById('select-mode-word');
-        const sBtn = document.getElementById('select-mode-sentence');
-        const fBtn = document.getElementById('select-mode-flashlight');
+        const modes = ['word', 'sentence', 'flashlight', 'memory'];
+        modes.forEach((m) => {
+          const btn = document.getElementById(`select-mode-${m}`);
+          const badge = document.getElementById(`badge-mode-${m}`);
+          if (btn) {
+            if (m === 'flashlight') {
+              btn.className = m === mode
+                ? 'det-btn text-left p-3 rounded-2xl border-4 border-detMustard bg-detNavy text-white transition-all flex flex-col justify-between relative overflow-hidden'
+                : 'det-btn text-left p-3 rounded-2xl border-4 border-detBrown/35 bg-detNavy text-white transition-all flex flex-col justify-between relative overflow-hidden';
+            } else {
+              btn.className = m === mode
+                ? 'det-btn text-left p-3 rounded-2xl border-4 border-detBrown bg-detMustard/35 transition-all flex flex-col justify-between'
+                : 'det-btn text-left p-3 rounded-2xl border-4 border-detBrown/35 bg-detBeige/60 transition-all flex flex-col justify-between';
+            }
+          }
+          if (badge) badge.classList.toggle('hidden', m !== mode);
+        });
 
-        const wBadge = document.getElementById('badge-mode-word');
-        const sBadge = document.getElementById('badge-mode-sentence');
-        const fBadge = document.getElementById('badge-mode-flashlight');
         const flOpts = document.getElementById('setup-flashlight-options');
-
-        wBtn.className = 'det-btn text-left p-3.5 rounded-2xl border-4 border-detBrown/35 bg-detBeige/60 transition-all flex flex-col justify-between';
-        sBtn.className = 'det-btn text-left p-3.5 rounded-2xl border-4 border-detBrown/35 bg-detBeige/60 transition-all flex flex-col justify-between';
-        fBtn.className = 'det-btn text-left p-3.5 rounded-2xl border-4 border-detBrown/35 bg-detNavy text-white transition-all flex flex-col justify-between relative overflow-hidden';
-        wBadge.classList.add('hidden');
-        sBadge.classList.add('hidden');
-        fBadge.classList.add('hidden');
-        flOpts.classList.add('hidden');
-
-        if (mode === 'word') {
-          wBtn.className = 'det-btn text-left p-3.5 rounded-2xl border-4 border-detBrown bg-detMustard/35 transition-all flex flex-col justify-between';
-          wBadge.classList.remove('hidden');
-        } else if (mode === 'sentence') {
-          sBtn.className = 'det-btn text-left p-3.5 rounded-2xl border-4 border-detBrown bg-detMustard/35 transition-all flex flex-col justify-between';
-          sBadge.classList.remove('hidden');
-        } else if (mode === 'flashlight') {
-          fBtn.className = 'det-btn text-left p-3.5 rounded-2xl border-4 border-detMustard bg-detNavy text-white transition-all flex flex-col justify-between relative overflow-hidden';
-          fBadge.classList.remove('hidden');
-          flOpts.classList.remove('hidden');
-          this.selectFlashlightSubmode(this.flashlightSubmode);
+        if (flOpts) {
+          flOpts.classList.toggle('hidden', mode !== 'flashlight');
+          if (mode === 'flashlight') this.selectFlashlightSubmode(this.flashlightSubmode);
         }
 
         this.populateSetDropdown();
@@ -1498,7 +1500,8 @@
 
       getEffectiveContentType() {
         if (this.gameMode === 'flashlight') return this.flashlightSubmode;
-        return this.gameMode;
+        if (this.gameMode === 'sentence') return 'sentence';
+        return 'word'; // 'word' and 'memory' use vocabulary entries
       },
 
       populateSetDropdown() {
@@ -1543,25 +1546,38 @@
     };
 
     /* =========================================================================
-     * 7. CORE GAME ENGINE (Single Player + Split-Screen Teams + Flashlight)
+     * 7. CORE GAME ENGINE (Word, Sentence, Flashlight & Memory — Unlimited)
      * ========================================================================= */
     const GameEngine = (() => {
       let singleTimerId = null;
       let sharedMemTimerId = null;
       let teamTimers = { 1: null, 2: null };
       let flashlightRafId = null;
+      let resizeBound = false;
 
       let singleState = null;
       let teamSession = null;
       let team1State = null;
       let team2State = null;
 
-      // Flashlight controller instances for Single (key 'single') and Teams (keys 1, 2)
       const flashlightControllers = {
         single: null,
         1: null,
         2: null
       };
+
+      function ensureResizeListener() {
+        if (resizeBound) return;
+        resizeBound = true;
+        window.addEventListener('resize', () => {
+          if (App.currentScreen === 'GAME_SINGLE' && singleState?.gameMode === 'memory') {
+            renderSingleMemoryBoard();
+          } else if (App.currentScreen === 'GAME_TEAM' && teamSession?.gameMode === 'memory') {
+            if (team1State && !team1State.completed && team1State.phase === 'CHALLENGE') renderTeamMemoryBoard(1);
+            if (team2State && !team2State.completed && team2State.phase === 'CHALLENGE') renderTeamMemoryBoard(2);
+          }
+        });
+      }
 
       function clearAllTimers() {
         if (singleTimerId) {
@@ -1614,6 +1630,33 @@
         return `${String(mins).padStart(2, '0')}:${String(rem).padStart(2, '0')}`;
       }
 
+      /* Dynamic Grid Column / Card Sizing Calculator (No fixed 6-item limit) */
+      function computeDynamicGridMetrics(totalCards, containerW, containerH, compact = false) {
+        const n = Math.max(1, totalCards);
+        const w = Math.max(280, containerW || window.innerWidth);
+        const h = Math.max(220, containerH || window.innerHeight * 0.65);
+
+        let cols = 2;
+        if (n <= 4) cols = Math.min(n, 2);
+        else if (n <= 6) cols = w < 640 ? 2 : 3;
+        else if (n <= 12) cols = w < 640 ? 3 : 4;
+        else if (n <= 20) cols = w < 640 ? 4 : 5;
+        else if (n <= 32) cols = w < 640 ? 4 : 6;
+        else cols = w < 640 ? 5 : 8;
+
+        if (compact) {
+          cols = Math.max(2, Math.min(cols, n <= 4 ? 2 : n <= 9 ? 3 : 4));
+        }
+
+        const rows = Math.ceil(n / cols);
+        const gapPx = n > 24 ? 8 : n > 12 ? 10 : 14;
+        const cardH = Math.max(68, Math.min(195, Math.floor((h - gapPx * (rows + 1)) / Math.min(rows, compact ? 4 : 5))));
+        const imgPx = Math.max(28, Math.min(96, Math.round(cardH * 0.46)));
+        const fontClass = cardH >= 135 ? 'text-lg sm:text-xl' : cardH >= 96 ? 'text-sm sm:text-base' : 'text-xs';
+
+        return { cols, rows, gapPx, cardH, imgPx, fontClass };
+      }
+
       function runCountdown(durationSec, setterFn, onTick, onComplete) {
         setterFn(null);
         const endTime = performance.now() + durationSec * 1000;
@@ -1653,24 +1696,28 @@
         return `radial-gradient(circle ${edgeStop}px at ${x.toFixed(1)}px ${y.toFixed(1)}px, rgba(8,13,22,${coreAlpha.toFixed(2)}) 0px, rgba(8,13,22,${(coreAlpha + (1 - coreAlpha) * 0.35).toFixed(2)}) ${midStop}px, rgba(8,13,22,0.985) ${edgeStop}px)`;
       }
 
-      /* Non-overlapping scattered clue generator inside arena bounds */
-      function generateScatteredCluePositions(count, arenaWidth, arenaHeight, minGap = 115) {
+      /* Dynamic non-overlapping scattered clue generator for ANY clue count */
+      function generateScatteredCluePositions(count, arenaWidth, arenaHeight, minGap = 110) {
         const positions = [];
-        const padX = Math.min(95, Math.max(56, arenaWidth * 0.13));
-        const padY = Math.min(82, Math.max(48, arenaHeight * 0.15));
-        const usableW = Math.max(120, arenaWidth - padX * 2);
-        const usableH = Math.max(120, arenaHeight - padY * 2);
+        const safeW = Math.max(240, arenaWidth);
+        const safeH = Math.max(200, arenaHeight);
+        const padX = Math.min(92, Math.max(44, safeW * 0.1));
+        const padY = Math.min(76, Math.max(40, safeH * 0.12));
+        const usableW = Math.max(120, safeW - padX * 2);
+        const usableH = Math.max(120, safeH - padY * 2);
+
+        const area = usableW * usableH;
+        const adaptiveGap = Math.max(46, Math.min(minGap, Math.sqrt(area / Math.max(1, count * 1.65))));
 
         for (let i = 0; i < count; i++) {
-          let bestX = padX + (usableW * ((i + 0.5) / Math.max(1, count)));
-          let bestY = padY + usableH * (i % 2 === 0 ? 0.3 : 0.7);
+          let bestX = padX + usableW * ((i + 0.5) / Math.max(1, count));
+          let bestY = padY + usableH * (i % 2 === 0 ? 0.28 : 0.72);
           let found = false;
 
-          for (let attempt = 0; attempt < 90; attempt++) {
+          for (let attempt = 0; attempt < 85; attempt++) {
             const cx = padX + Math.random() * usableW;
             const cy = padY + Math.random() * usableH;
-            const ok = positions.every((p) => Math.hypot(p.x - cx, p.y - cy) >= minGap);
-            if (ok) {
+            if (positions.every((p) => Math.hypot(p.x - cx, p.y - cy) >= adaptiveGap)) {
               bestX = cx;
               bestY = cy;
               found = true;
@@ -1679,9 +1726,8 @@
           }
 
           if (!found && positions.length > 0) {
-            // Fallback: pick farthest candidate from existing points
             let maxDist = -1;
-            for (let k = 0; k < 25; k++) {
+            for (let k = 0; k < 24; k++) {
               const cx = padX + Math.random() * usableW;
               const cy = padY + Math.random() * usableH;
               const minD = Math.min(...positions.map((p) => Math.hypot(p.x - cx, p.y - cy)));
@@ -1699,7 +1745,6 @@
         return positions;
       }
 
-      /* Smooth requestAnimationFrame loop updating spotlights & illuminated clue status */
       function startFlashlightLoop() {
         if (flashlightRafId) cancelAnimationFrame(flashlightRafId);
 
@@ -1709,11 +1754,9 @@
             if (!ctrl || !ctrl.active) return;
 
             const sens = Number(Store.state.settings.flashlightSensitivity || 1.0);
-            const dx = ctrl.targetX - ctrl.x;
-            const dy = ctrl.targetY - ctrl.y;
             const lerp = Math.min(0.85, 0.28 * sens);
-            ctrl.x += dx * lerp;
-            ctrl.y += dy * lerp;
+            ctrl.x += (ctrl.targetX - ctrl.x) * lerp;
+            ctrl.y += (ctrl.targetY - ctrl.y) * lerp;
 
             const darkEl = document.getElementById(ctrl.darkLayerId);
             if (darkEl) {
@@ -1743,25 +1786,21 @@
 
         const updateTargetFromEvent = (ev) => {
           const r = arenaEl.getBoundingClientRect();
-          const px = Math.max(0, Math.min(r.width, ev.clientX - r.left));
-          const py = Math.max(0, Math.min(r.height, ev.clientY - r.top));
-          ctrl.targetX = px;
-          ctrl.targetY = py;
+          ctrl.targetX = Math.max(0, Math.min(r.width, ev.clientX - r.left));
+          ctrl.targetY = Math.max(0, Math.min(r.height, ev.clientY - r.top));
           AudioFX.flashlightSweep();
         };
 
         arenaEl.onpointermove = (ev) => {
-          if (!ctrl.active) return;
-          updateTargetFromEvent(ev);
+          if (ctrl.active) updateTargetFromEvent(ev);
         };
-
         arenaEl.onpointerdown = (ev) => {
-          if (!ctrl.active) return;
-          updateTargetFromEvent(ev);
+          if (ctrl.active) updateTargetFromEvent(ev);
         };
       }
 
       function startNewGame() {
+        ensureResizeListener();
         clearAllTimers();
         const settings = Store.state.settings;
         const gameMode = SetupUI.gameMode;
@@ -1778,7 +1817,8 @@
           return;
         }
 
-        const count = Math.min(rawItems.length, settings.questionCount || 6);
+        const requested = Number(settings.questionCount || 9999);
+        const count = requested >= 9999 ? rawItems.length : Math.min(rawItems.length, Math.max(1, requested));
 
         if (playMode === 'single') {
           startSinglePlayerGame(gameMode, contentType, rawItems, count, settings);
@@ -1788,11 +1828,19 @@
       }
 
       /* =====================================================================
-       * A. SINGLE PLAYER MODE (Word, Sentence & Flashlight Detectives)
+       * A. SINGLE PLAYER MODE (Word, Sentence, Flashlight & Memory)
        * ===================================================================== */
       function startSinglePlayerGame(gameMode, contentType, rawItems, count, settings) {
         const selected = (settings.randomizeQuestions ? shuffle(rawItems) : [...rawItems]).slice(0, count);
-        const playerName = (document.getElementById('input-player-name')?.value || 'Detective Alex').trim() || 'Detective Alex';
+        const playerName = (document.getElementById('input-player-name')?.value || 'Player 1').trim() || 'Player 1';
+
+        // Build Memory Deck (2 cards per entry: picture card + word card, or twin pair cards)
+        const memoryDeck = shuffle(
+          selected.flatMap((item, idx) => [
+            { uid: `m_a_${item.id}_${idx}`, pairId: item.id, kind: 'picture', word: item.word, image: item.image, flipped: false, matched: false },
+            { uid: `m_b_${item.id}_${idx}`, pairId: item.id, kind: 'word', word: item.word, image: item.image, flipped: false, matched: false }
+          ])
+        );
 
         singleState = {
           gameMode,
@@ -1812,10 +1860,15 @@
           secondsElapsed: 0,
           sentenceTilesBank: [],
           sentenceTilesAnswer: [],
-          // Flashlight-specific state
           flClues: [],
           flFoundWords: new Set(),
-          flFreeCollected: []
+          flFreeCollected: [],
+          // Memory game state
+          memoryDeck,
+          memoryFlippedUids: [],
+          memoryMatchedPairs: new Set(),
+          memoryPage: 0,
+          memoryPerPage: 24
         };
 
         document.querySelectorAll('.screen').forEach((s) => s.classList.add('hidden'));
@@ -1827,6 +1880,8 @@
           startSingleWordMemorize();
         } else if (gameMode === 'sentence') {
           startSingleSentenceMemorize();
+        } else if (gameMode === 'memory') {
+          startSingleMemoryMemorize();
         } else {
           startSingleFlashlightMode();
         }
@@ -1837,13 +1892,17 @@
         const modeLabel =
           singleState.gameMode === 'flashlight'
             ? `FLASHLIGHT DETECTIVES (${singleState.contentType === 'word' ? 'WORDS' : 'SENTENCE'})`
+            : singleState.gameMode === 'memory'
+            ? 'MEMORY GAME'
             : singleState.gameMode === 'word'
             ? 'WORD DETECTIVE'
             : 'SENTENCE DETECTIVE';
 
         document.getElementById('single-hud-mode').textContent = modeLabel;
         document.getElementById('single-hud-round').textContent =
-          `Clue ${Math.min(singleState.currentIdx + 1, singleState.questionOrder.length)} of ${singleState.questionOrder.length}`;
+          singleState.gameMode === 'memory'
+            ? `Pairs: ${singleState.memoryMatchedPairs.size} of ${singleState.questionOrder.length}`
+            : `Clue ${Math.min(singleState.currentIdx + 1, singleState.questionOrder.length)} of ${singleState.questionOrder.length}`;
 
         document.getElementById('single-hud-scoreboard').innerHTML = `
           <div class="bg-detBlue/20 border-2 border-detBrown rounded-xl px-3.5 py-1 flex items-center gap-3">
@@ -1866,7 +1925,7 @@
       function startSingleWordMemorize() {
         singleState.phase = 'MEMORIZE';
         document.getElementById('single-prompt-subtitle').textContent = 'MEMORIZATION PHASE • STUDY THE CARDS';
-        document.getElementById('single-prompt-main').textContent = 'Remember where every clue is hiding!';
+        document.getElementById('single-prompt-main').textContent = `Memorize all ${singleState.boardCards.length} clues!`;
         document.getElementById('single-prompt-actions').innerHTML = `
           <button onclick="GameEngine.beginSingleWordChallenge()" class="det-btn bg-detSage text-white border-3 border-detBrown rounded-xl px-4 py-2 font-display font-bold text-sm sm:text-base shadow-btn">
             🚀 START CHALLENGE NOW
@@ -1886,14 +1945,10 @@
         const stage = document.getElementById('single-game-stage');
         const count = singleState.boardCards.length;
         const displayMode = Store.state.settings.cardDisplayMode;
-
-        let colsClass = 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4';
-        if (count <= 4) colsClass = 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-4';
-        else if (count <= 6) colsClass = 'grid-cols-2 sm:grid-cols-3';
-        else if (count <= 8) colsClass = 'grid-cols-2 sm:grid-cols-4';
+        const metrics = computeDynamicGridMetrics(count, stage.clientWidth || 960, stage.clientHeight || 460, false);
 
         stage.innerHTML = `
-          <div class="grid ${colsClass} gap-3 sm:gap-4 w-full max-w-5xl mx-auto">
+          <div style="display:grid; grid-template-columns: repeat(${metrics.cols}, minmax(0, 1fr)); gap: ${metrics.gapPx}px;" class="w-full mx-auto">
             ${singleState.boardCards
               .map((item, idx) => {
                 const isSolved = singleState.solvedIds.has(item.id);
@@ -1901,22 +1956,22 @@
 
                 if (showFace) {
                   return `
-                    <div id="single-card-${item.id}" class="clue-card locked bg-detCream border-4 ${
+                    <div id="single-card-${item.id}" style="min-height:${metrics.cardH}px;" class="clue-card locked bg-detCream border-3 ${
                       isSolved ? 'border-detSage bg-detSage/15' : 'border-detBrown'
-                    } rounded-3xl p-3 sm:p-4 shadow-card flex flex-col items-center justify-center min-h-[145px] sm:min-h-[185px] relative">
+                    } rounded-2xl p-2 shadow-card flex flex-col items-center justify-center relative">
                       ${
                         isSolved
-                          ? '<span class="absolute top-2 right-2 bg-detSage text-white text-xs font-black px-2 py-0.5 rounded-full border border-detBrown">✔ FOUND</span>'
+                          ? '<span class="absolute top-1.5 right-1.5 bg-detSage text-white text-[10px] font-black px-1.5 py-0.5 rounded-full border border-detBrown">✔</span>'
                           : ''
                       }
                       ${
                         displayMode !== 'word'
-                          ? `<img src="${UI.escapeHTML(item.image || PresetArt.magnifyingGlass)}" onerror="this.src='${PresetArt.magnifyingGlass}'" alt="${UI.escapeHTML(item.word)}" class="w-24 h-24 sm:w-28 sm:h-28 object-contain mb-2 rounded-xl" />`
+                          ? `<img src="${UI.escapeHTML(item.image || PresetArt.magnifyingGlass)}" onerror="this.src='${PresetArt.magnifyingGlass}'" alt="${UI.escapeHTML(item.word)}" style="width:${metrics.imgPx}px; height:${metrics.imgPx}px;" class="object-contain mb-1 rounded-lg" />`
                           : ''
                       }
                       ${
                         displayMode !== 'picture'
-                          ? `<div class="preserve-case font-display text-xl sm:text-2xl font-bold text-detNavy text-center">${UI.escapeHTML(item.word)}</div>`
+                          ? `<div class="preserve-case font-display ${metrics.fontClass} font-bold text-detNavy text-center leading-tight break-words w-full">${UI.escapeHTML(item.word)}</div>`
                           : ''
                       }
                     </div>
@@ -1924,12 +1979,12 @@
                 }
 
                 return `
-                  <button id="single-card-${item.id}" onclick="GameEngine.handleSingleWordGuess('${item.id}')" class="clue-card bg-detCaramel hover:bg-[#CFA478] border-4 border-detBrown rounded-3xl p-3 sm:p-4 shadow-card flex flex-col items-center justify-center min-h-[145px] sm:min-h-[185px] relative cursor-pointer">
-                    <span class="absolute top-2.5 left-3 bg-detCream border-2 border-detBrown rounded-lg px-2 py-0.5 font-display font-bold text-xs text-detBrown">#${idx + 1}</span>
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-detCream/90 border-3 border-detBrown flex items-center justify-center mb-1.5 shadow-xs">
-                      <span class="font-display text-4xl sm:text-5xl font-bold text-detCoral">?</span>
+                  <button id="single-card-${item.id}" style="min-height:${metrics.cardH}px;" onclick="GameEngine.handleSingleWordGuess('${item.id}')" class="clue-card bg-detCaramel hover:bg-[#CFA478] border-3 border-detBrown rounded-2xl p-2 shadow-card flex flex-col items-center justify-center relative cursor-pointer">
+                    <span class="absolute top-1.5 left-2 bg-detCream border border-detBrown rounded-md px-1.5 text-[10px] font-bold text-detBrown">#${idx + 1}</span>
+                    <div class="w-11 h-11 rounded-xl bg-detCream/90 border-2 border-detBrown flex items-center justify-center mb-1">
+                      <span class="font-display text-2xl font-bold text-detCoral">?</span>
                     </div>
-                    <span class="font-display text-xs sm:text-sm font-bold text-detBrown tracking-wider">SECRET CLUE</span>
+                    <span class="font-display text-[11px] font-bold text-detBrown">CLUE</span>
                   </button>
                 `;
               })
@@ -2015,7 +2070,7 @@
           setTimeout(() => {
             singleState.currentIdx += 1;
             presentSingleWordTarget();
-          }, 1100);
+          }, 950);
         } else {
           AudioFX.wrong();
           singleState.attemptsUsed += 1;
@@ -2024,9 +2079,9 @@
           if (cardEl) {
             cardEl.classList.add('animate-shake', 'border-detCoral', 'bg-detCoral/20');
             cardEl.innerHTML = `
-              <img src="${UI.escapeHTML(guessed.image || PresetArt.magnifyingGlass)}" class="w-20 h-20 object-contain mb-1 rounded-xl" />
-              <div class="preserve-case font-display text-lg font-bold text-detCoral">${UI.escapeHTML(guessed.word)}</div>
-              <span class="text-xs font-black text-detCoral">Not quite!</span>
+              <img src="${UI.escapeHTML(guessed.image || PresetArt.magnifyingGlass)}" class="w-14 h-14 object-contain mb-1 rounded-lg" />
+              <div class="preserve-case font-display text-sm font-bold text-detCoral">${UI.escapeHTML(guessed.word)}</div>
+              <span class="text-[11px] font-black text-detCoral">Not quite!</span>
             `;
           }
 
@@ -2047,7 +2102,7 @@
               renderSingleWordGrid(true);
               singleState.inputLocked = false;
             }
-          }, 900);
+          }, 850);
         }
       }
 
@@ -2062,7 +2117,7 @@
         setTimeout(() => {
           singleState.currentIdx += 1;
           presentSingleWordTarget();
-        }, 1200);
+        }, 1100);
       }
 
       /* --- Single Sentence Detective --- */
@@ -2085,20 +2140,20 @@
         `;
 
         document.getElementById('single-game-stage').innerHTML = `
-          <div class="bg-detCream border-4 border-detBrown rounded-[2rem] p-6 sm:p-10 shadow-card max-w-3xl w-full text-center animate-pop">
+          <div class="bg-detCream border-4 border-detBrown rounded-[2rem] p-6 sm:p-8 shadow-card max-w-4xl w-full text-center animate-pop">
             ${
               currentSentence.image
-                ? `<img src="${UI.escapeHTML(currentSentence.image)}" onerror="this.style.display='none'" class="w-32 h-32 sm:w-40 sm:h-40 object-contain mx-auto mb-4 rounded-2xl border-3 border-detBrown/30 bg-detBeige/40 p-2" />`
+                ? `<img src="${UI.escapeHTML(currentSentence.image)}" onerror="this.style.display='none'" class="w-28 h-28 object-contain mx-auto mb-3 rounded-2xl border-2 border-detBrown/30 bg-detBeige/40 p-2" />`
                 : ''
             }
-            <div class="bg-detBeige border-3 border-detBrown rounded-2xl px-6 py-5 mb-3">
-              <p class="preserve-case font-display text-2xl sm:text-4xl font-bold text-detNavy leading-snug">
+            <div class="bg-detBeige border-3 border-detBrown rounded-2xl px-6 py-4 mb-2">
+              <p class="preserve-case font-display text-xl sm:text-3xl font-bold text-detNavy leading-snug">
                 ${UI.escapeHTML(currentSentence.text)}
               </p>
             </div>
             ${
               settings.showHints && currentSentence.hint
-                ? `<p class="preserve-case text-sm sm:text-base font-bold text-detBrown">💡 Clue Note: ${UI.escapeHTML(currentSentence.hint)}</p>`
+                ? `<p class="preserve-case text-sm font-bold text-detBrown">💡 Clue Note: ${UI.escapeHTML(currentSentence.hint)}</p>`
                 : ''
             }
           </div>
@@ -2129,7 +2184,7 @@
         singleState.sentenceTilesAnswer = [];
 
         document.getElementById('single-prompt-subtitle').textContent = 'RECONSTRUCT THE SENTENCE';
-        document.getElementById('single-prompt-main').textContent = 'Tap (or drag) the word tiles into the exact sentence order!';
+        document.getElementById('single-prompt-main').textContent = `Arrange all ${cleanWords.length} word tiles in order!`;
         document.getElementById('single-prompt-actions').innerHTML = `
           <button onclick="GameEngine.clearSingleSentenceTiles()" class="det-btn bg-detBeige border-2 border-detBrown rounded-xl px-3 py-1.5 font-display font-bold text-xs sm:text-sm text-detBrown">
             🔄 Reset Tiles
@@ -2158,15 +2213,17 @@
       function renderSingleSentenceBoard() {
         const stage = document.getElementById('single-game-stage');
         const currentSentence = singleState.questionOrder[singleState.currentIdx];
+        const totalWords = singleState.sentenceTilesBank.length + singleState.sentenceTilesAnswer.length;
+        const tileSizeClass = totalWords > 16 ? 'px-2.5 py-1.5 text-sm sm:text-base' : totalWords > 10 ? 'px-3 py-2 text-base sm:text-lg' : 'px-4 py-2.5 text-lg sm:text-xl';
 
         stage.innerHTML = `
-          <div class="w-full max-w-4xl mx-auto flex flex-col gap-4">
-            <div class="bg-detCream border-4 border-detBrown rounded-3xl p-4 sm:p-5 shadow-card">
+          <div class="w-full max-w-5xl mx-auto flex flex-col gap-3">
+            <div class="bg-detCream border-4 border-detBrown rounded-3xl p-4 shadow-card">
               <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-black tracking-wider text-detBrown">📝 Your Reconstructed Sentence</span>
+                <span class="text-xs font-black tracking-wider text-detBrown">📝 Your Reconstructed Sentence (${singleState.sentenceTilesAnswer.length}/${totalWords})</span>
                 ${
                   currentSentence.image
-                    ? `<img src="${UI.escapeHTML(currentSentence.image)}" onerror="this.style.display='none'" class="w-12 h-12 object-contain rounded-xl border-2 border-detBrown/30 bg-detBeige/50 p-1" />`
+                    ? `<img src="${UI.escapeHTML(currentSentence.image)}" onerror="this.style.display='none'" class="w-11 h-11 object-contain rounded-xl border-2 border-detBrown/30 bg-detBeige/50 p-1" />`
                     : ''
                 }
               </div>
@@ -2174,17 +2231,17 @@
               <div id="single-sentence-answer-zone"
                    ondragover="event.preventDefault()"
                    ondrop="GameEngine.handleSingleDropToAnswer(event)"
-                   class="min-h-[84px] sm:min-h-[96px] bg-detBeige/70 border-3 border-dashed border-detBrown/50 rounded-2xl p-3 flex flex-wrap items-center gap-2.5">
+                   class="min-h-[82px] max-h-[160px] overflow-y-auto custom-scroll bg-detBeige/70 border-3 border-dashed border-detBrown/50 rounded-2xl p-2.5 flex flex-wrap items-center gap-2">
                 ${
                   singleState.sentenceTilesAnswer.length === 0
-                    ? '<span class="text-detBrown/60 font-bold text-sm sm:text-base mx-auto">Tap word tiles below to build the sentence here...</span>'
+                    ? '<span class="text-detBrown/60 font-bold text-sm mx-auto">Tap word tiles below to build the sentence here...</span>'
                     : singleState.sentenceTilesAnswer
                         .map(
                           (t) => `
                         <button draggable="true"
                                 ondragstart="GameEngine.handleSingleDragStart(event, '${t.id}', 'answer')"
                                 onclick="GameEngine.moveSingleTile('${t.id}', 'answer')"
-                                class="preserve-case word-tile det-btn bg-detMustard text-detNavy border-3 border-detBrown rounded-2xl px-4 py-2.5 font-display text-lg sm:text-2xl font-bold shadow-btn">
+                                class="preserve-case word-tile det-btn bg-detMustard text-detNavy border-2 border-detBrown rounded-xl ${tileSizeClass} font-display font-bold shadow-xs">
                           ${UI.escapeHTML(t.word)}
                         </button>`
                         )
@@ -2193,19 +2250,19 @@
               </div>
             </div>
 
-            <div class="bg-detCream/90 border-3 border-detBrown rounded-3xl p-4 sm:p-5">
-              <div class="text-xs font-black tracking-wider text-detBrown mb-2.5">🔀 Clue Word Bank</div>
+            <div class="bg-detCream/90 border-3 border-detBrown rounded-3xl p-4">
+              <div class="text-xs font-black tracking-wider text-detBrown mb-2">🔀 Clue Word Bank (${singleState.sentenceTilesBank.length} left)</div>
               <div id="single-sentence-bank-zone"
                    ondragover="event.preventDefault()"
                    ondrop="GameEngine.handleSingleDropToBank(event)"
-                   class="min-h-[76px] flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                   class="min-h-[74px] max-h-[180px] overflow-y-auto custom-scroll flex flex-wrap items-center justify-center gap-2">
                 ${singleState.sentenceTilesBank
                   .map(
                     (t) => `
                     <button draggable="true"
                             ondragstart="GameEngine.handleSingleDragStart(event, '${t.id}', 'bank')"
                             onclick="GameEngine.moveSingleTile('${t.id}', 'bank')"
-                            class="preserve-case word-tile det-btn bg-detCream hover:bg-detBlue/20 text-detNavy border-3 border-detBrown rounded-2xl px-4 py-2.5 font-display text-lg sm:text-2xl font-bold shadow-btn">
+                            class="preserve-case word-tile det-btn bg-detCream hover:bg-detBlue/20 text-detNavy border-2 border-detBrown rounded-xl ${tileSizeClass} font-display font-bold shadow-xs">
                       ${UI.escapeHTML(t.word)}
                     </button>`
                   )
@@ -2214,7 +2271,7 @@
             </div>
 
             <div class="flex justify-center">
-              <button onclick="GameEngine.checkSingleSentenceAnswer()" class="det-btn bg-detSage hover:bg-[#7D9B7A] text-white border-4 border-detBrown rounded-2xl px-8 py-3.5 shadow-btn font-display text-xl sm:text-2xl font-bold flex items-center gap-2.5">
+              <button onclick="GameEngine.checkSingleSentenceAnswer()" class="det-btn bg-detSage hover:bg-[#7D9B7A] text-white border-4 border-detBrown rounded-2xl px-8 py-3 shadow-btn font-display text-xl font-bold flex items-center gap-2.5">
                 <span>✅</span> <span>CHECK ANSWER</span>
               </button>
             </div>
@@ -2294,7 +2351,7 @@
           setTimeout(() => {
             singleState.currentIdx += 1;
             startSingleSentenceMemorize();
-          }, 1150);
+          }, 1100);
         } else {
           AudioFX.wrong();
           singleState.attemptsUsed += 1;
@@ -2315,9 +2372,150 @@
             setTimeout(() => {
               singleState.currentIdx += 1;
               startSingleSentenceMemorize();
-            }, 1550);
+            }, 1450);
           } else {
             UI.toast('Check word order, capitalization, and punctuation!', 'warn');
+          }
+        }
+      }
+
+      /* --- Single Memory Game (Dynamic Grid + Multi-Page Pagination) --- */
+      function startSingleMemoryMemorize() {
+        singleState.phase = 'MEMORIZE';
+        document.getElementById('single-prompt-subtitle').textContent = 'MEMORY GAME • MEMORIZE THE PAIRS';
+        document.getElementById('single-prompt-main').textContent = `Find all ${singleState.questionOrder.length} matching pairs (${singleState.memoryDeck.length} cards)!`;
+        document.getElementById('single-prompt-actions').innerHTML = `
+          <button onclick="GameEngine.beginSingleMemoryChallenge()" class="det-btn bg-detSage text-white border-3 border-detBrown rounded-xl px-4 py-2 font-display font-bold text-sm shadow-btn">
+            🚀 START MATCHING
+          </button>
+        `;
+        renderSingleMemoryBoard(true);
+
+        runCountdown(
+          Store.state.settings.memorizeTime,
+          (id) => (singleTimerId = id),
+          (sec) => setSingleTimerText(sec, sec > 0 && sec <= 5),
+          () => beginSingleMemoryChallenge()
+        );
+      }
+
+      function beginSingleMemoryChallenge() {
+        if (singleTimerId) {
+          clearInterval(singleTimerId);
+          singleTimerId = null;
+        }
+        AudioFX.flip();
+        singleState.phase = 'CHALLENGE';
+        singleState.inputLocked = false;
+        setSingleTimerText('∞', false);
+        renderSingleMemoryBoard(false);
+      }
+
+      function renderSingleMemoryBoard(peekAll = false) {
+        const stage = document.getElementById('single-game-stage');
+        const perPage = singleState.memoryPerPage;
+        const totalPages = Math.max(1, Math.ceil(singleState.memoryDeck.length / perPage));
+        singleState.memoryPage = Math.max(0, Math.min(totalPages - 1, singleState.memoryPage));
+
+        const start = singleState.memoryPage * perPage;
+        const pageCards = singleState.memoryDeck.slice(start, start + perPage);
+        const metrics = computeDynamicGridMetrics(pageCards.length, stage.clientWidth || 960, (stage.clientHeight || 460) - 48, false);
+
+        document.getElementById('single-prompt-actions').innerHTML = `
+          ${
+            totalPages > 1
+              ? `
+              <div class="flex items-center gap-1.5 bg-detCream border-2 border-detBrown rounded-xl px-2.5 py-1">
+                <button onclick="GameEngine.changeSingleMemoryPage(-1)" ${singleState.memoryPage === 0 ? 'disabled' : ''} class="det-btn bg-detBeige border border-detBrown rounded-lg px-2 py-0.5 text-xs font-bold">◀</button>
+                <span class="font-display text-xs font-bold text-detNavy">Page ${singleState.memoryPage + 1}/${totalPages}</span>
+                <button onclick="GameEngine.changeSingleMemoryPage(1)" ${singleState.memoryPage >= totalPages - 1 ? 'disabled' : ''} class="det-btn bg-detBeige border border-detBrown rounded-lg px-2 py-0.5 text-xs font-bold">▶</button>
+              </div>`
+              : ''
+          }
+          <span class="bg-detCream border-2 border-detBrown rounded-xl px-3 py-1 font-display font-bold text-xs text-detBrown">
+            Pairs: ${singleState.memoryMatchedPairs.size}/${singleState.questionOrder.length}
+          </span>
+        `;
+
+        stage.innerHTML = `
+          <div style="display:grid; grid-template-columns: repeat(${metrics.cols}, minmax(0, 1fr)); gap: ${metrics.gapPx}px;" class="w-full mx-auto">
+            ${pageCards
+              .map((card) => {
+                const isFaceUp = peekAll || card.matched || singleState.memoryFlippedUids.includes(card.uid);
+                if (isFaceUp) {
+                  return `
+                    <button style="min-height:${metrics.cardH}px;" onclick="GameEngine.handleSingleMemoryFlip('${card.uid}')" class="clue-card bg-detCream border-3 ${
+                      card.matched ? 'border-detSage bg-detSage/15' : 'border-detBlue'
+                    } rounded-2xl p-2 shadow-card flex flex-col items-center justify-center">
+                      ${
+                        card.kind === 'picture'
+                          ? `<img src="${UI.escapeHTML(card.image || PresetArt.magnifyingGlass)}" onerror="this.src='${PresetArt.magnifyingGlass}'" style="width:${metrics.imgPx}px; height:${metrics.imgPx}px;" class="object-contain rounded-lg" />`
+                          : `<span class="preserve-case font-display ${metrics.fontClass} font-bold text-detNavy text-center break-words w-full">${UI.escapeHTML(card.word)}</span>`
+                      }
+                    </button>
+                  `;
+                }
+                return `
+                  <button style="min-height:${metrics.cardH}px;" onclick="GameEngine.handleSingleMemoryFlip('${card.uid}')" class="clue-card bg-detNavy hover:bg-[#374B60] text-detMustard border-3 border-detBrown rounded-2xl p-2 shadow-card flex flex-col items-center justify-center cursor-pointer">
+                    <span class="font-display text-2xl sm:text-3xl font-bold">?</span>
+                  </button>
+                `;
+              })
+              .join('')}
+          </div>
+        `;
+      }
+
+      function changeSingleMemoryPage(delta) {
+        AudioFX.click();
+        singleState.memoryPage += delta;
+        renderSingleMemoryBoard(singleState.phase === 'MEMORIZE');
+      }
+
+      function handleSingleMemoryFlip(uid) {
+        if (singleState.phase !== 'CHALLENGE' || singleState.inputLocked) return;
+        if (singleState.memoryFlippedUids.includes(uid)) return;
+        const card = singleState.memoryDeck.find((c) => c.uid === uid);
+        if (!card || card.matched) return;
+
+        AudioFX.flip();
+        singleState.memoryFlippedUids.push(uid);
+        renderSingleMemoryBoard(false);
+
+        if (singleState.memoryFlippedUids.length === 2) {
+          singleState.inputLocked = true;
+          const [u1, u2] = singleState.memoryFlippedUids;
+          const c1 = singleState.memoryDeck.find((c) => c.uid === u1);
+          const c2 = singleState.memoryDeck.find((c) => c.uid === u2);
+
+          if (c1 && c2 && c1.pairId === c2.pairId) {
+            setTimeout(() => {
+              c1.matched = true;
+              c2.matched = true;
+              singleState.memoryMatchedPairs.add(c1.pairId);
+              singleState.memoryFlippedUids = [];
+              singleState.inputLocked = false;
+              AudioFX.correct();
+              applySingleScore(true);
+              renderSingleMemoryBoard(false);
+
+              if (singleState.memoryMatchedPairs.size >= singleState.questionOrder.length) {
+                setTimeout(() => finishSingleResults(), 650);
+              }
+            }, 350);
+          } else {
+            setTimeout(() => {
+              AudioFX.wrong();
+              singleState.memoryFlippedUids = [];
+              singleState.inputLocked = false;
+              if (Number(Store.state.settings.pointsPenalty || 0) > 0) {
+                applySingleScore(false);
+              } else {
+                singleState.incorrect += 1;
+                renderSingleHUD();
+              }
+              renderSingleMemoryBoard(false);
+            }, 750);
           }
         }
       }
@@ -2362,6 +2560,10 @@
         const target = singleState.questionOrder[singleState.currentIdx];
         const settings = Store.state.settings;
         const displayMode = settings.cardDisplayMode;
+        const totalClues = singleState.boardCards.length;
+        const compactClue = totalClues > 24 ? 'min-w-[68px] p-1.5' : totalClues > 14 ? 'min-w-[82px] p-2' : 'min-w-[100px] p-2.5';
+        const imgCls = totalClues > 24 ? 'w-10 h-10' : totalClues > 14 ? 'w-12 h-12' : 'w-15 h-15';
+        const txtCls = totalClues > 24 ? 'text-xs' : totalClues > 14 ? 'text-sm' : 'text-base sm:text-lg';
 
         document.getElementById('single-prompt-subtitle').textContent = '🔦 FLASHLIGHT NIGHT SEARCH • MOVE LIGHT & TAP MATCHING CLUE';
         document.getElementById('single-prompt-main').innerHTML = `
@@ -2370,7 +2572,7 @@
         `;
         document.getElementById('single-prompt-actions').innerHTML = `
           <span class="bg-detNavy text-detMustard border-2 border-detBrown rounded-xl px-3 py-1 font-display font-bold text-xs sm:text-sm">
-            Found: ${singleState.solvedIds.size}/${singleState.questionOrder.length}
+            Found: ${singleState.solvedIds.size}/${singleState.questionOrder.length} • Clues: ${totalClues}
           </span>
         `;
 
@@ -2385,7 +2587,7 @@
         const arena = document.getElementById('single-fl-arena');
         const cluesLayer = document.getElementById('single-fl-clues-layer');
         const rect = arena.getBoundingClientRect();
-        const coords = generateScatteredCluePositions(singleState.boardCards.length, rect.width || 800, rect.height || 440, 125);
+        const coords = generateScatteredCluePositions(totalClues, rect.width || 900, rect.height || 440, 115);
 
         singleState.flClues = singleState.boardCards.map((item, idx) => {
           const isAlreadyFound = singleState.solvedIds.has(item.id);
@@ -2406,15 +2608,15 @@
               <button id="fl-single-clue-${c.id}"
                       onclick="GameEngine.handleSingleFlashlightWordTap('${c.id}')"
                       style="left:${c.x}px; top:${c.y}px; opacity:${c.found ? '1' : '0'};"
-                      class="flashlight-clue bg-detCream border-3 ${c.found ? 'border-detSage bg-detSage/20' : 'border-detMustard'} rounded-2xl p-2.5 shadow-lg flex flex-col items-center justify-center min-w-[96px] sm:min-w-[116px]">
+                      class="flashlight-clue bg-detCream border-3 ${c.found ? 'border-detSage bg-detSage/20' : 'border-detMustard'} rounded-2xl ${compactClue} shadow-lg flex flex-col items-center justify-center">
                 ${
                   displayMode !== 'word'
-                    ? `<img src="${UI.escapeHTML(c.image || PresetArt.magnifyingGlass)}" onerror="this.src='${PresetArt.magnifyingGlass}'" class="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-lg mb-1" />`
+                    ? `<img src="${UI.escapeHTML(c.image || PresetArt.magnifyingGlass)}" onerror="this.src='${PresetArt.magnifyingGlass}'" class="${imgCls} object-contain rounded-lg mb-0.5" />`
                     : ''
                 }
                 ${
                   displayMode !== 'picture'
-                    ? `<span class="preserve-case font-display text-base sm:text-lg font-bold text-detNavy">${UI.escapeHTML(c.word)}</span>`
+                    ? `<span class="preserve-case font-display ${txtCls} font-bold text-detNavy">${UI.escapeHTML(c.word)}</span>`
                     : ''
                 }
               </button>
@@ -2439,8 +2641,7 @@
                 el.style.opacity = '1';
                 return;
               }
-              const dist = Math.hypot(c.x - lx, c.y - ly);
-              const lit = dist <= hitRadius;
+              const lit = Math.hypot(c.x - lx, c.y - ly) <= hitRadius;
               if (lit) c.illuminated = true;
               el.style.opacity = lit ? '1' : '0';
             });
@@ -2455,9 +2656,7 @@
       function handleSingleFlashlightWordTap(clueId) {
         if (singleState.phase !== 'CHALLENGE' || singleState.inputLocked) return;
         const clue = singleState.flClues.find((c) => c.id === clueId);
-        if (!clue || clue.found) return;
-        // Security guardrail: prevent selecting hidden/unilluminated clues
-        if (!clue.illuminated) return;
+        if (!clue || clue.found || !clue.illuminated) return;
 
         const target = singleState.questionOrder[singleState.currentIdx];
         if (!target) return;
@@ -2477,7 +2676,7 @@
           setTimeout(() => {
             singleState.currentIdx += 1;
             setupSingleFlashlightWordRound();
-          }, 900);
+          }, 850);
         } else {
           AudioFX.wrong();
           singleState.attemptsUsed += 1;
@@ -2493,14 +2692,14 @@
             setTimeout(() => {
               singleState.currentIdx += 1;
               setupSingleFlashlightWordRound();
-            }, 950);
+            }, 900);
           } else {
             UI.toast('Not that clue—keep searching in the dark!', 'warn');
           }
         }
       }
 
-      /* --- Single Flashlight Sentence Mode (Sequential & Free Search) --- */
+      /* --- Single Flashlight Sentence Mode (Unlimited Sentence Length) --- */
       function setupSingleFlashlightSentenceRound(sentIdx) {
         if (sentIdx >= singleState.questionOrder.length) {
           finishSingleResults();
@@ -2516,13 +2715,14 @@
         const sentItem = singleState.questionOrder[sentIdx];
         const words = UI.normalizeSentenceForCheck(sentItem.text).split(' ');
         const searchMode = Store.state.settings.sentenceSearchMode || 'sequential';
+        const tilePad = words.length > 16 ? 'px-2.5 py-1 text-sm' : words.length > 10 ? 'px-3 py-1.5 text-base' : 'px-4 py-2 text-lg';
 
         const stage = document.getElementById('single-game-stage');
         stage.innerHTML = `
-          <div class="w-full h-full flex flex-col gap-2.5">
+          <div class="w-full h-full flex flex-col gap-2">
             <div class="bg-detNavy text-white border-3 border-detBrown rounded-2xl px-4 py-2 flex flex-wrap items-center justify-between gap-2 shrink-0">
-              <div id="fl-single-sent-target" class="font-display text-base sm:text-xl font-bold"></div>
-              <div id="fl-single-sent-progress" class="flex flex-wrap gap-1.5"></div>
+              <div id="fl-single-sent-target" class="font-display text-sm sm:text-lg font-bold"></div>
+              <div id="fl-single-sent-progress" class="flex flex-wrap gap-1 max-h-16 overflow-y-auto custom-scroll"></div>
             </div>
 
             <div id="single-fl-arena" class="flashlight-arena flex-1 min-h-[280px] rounded-3xl border-4 border-detBrown shadow-card">
@@ -2531,7 +2731,7 @@
             </div>
 
             <div id="fl-single-free-bar" class="${searchMode === 'free' ? 'flex' : 'hidden'} bg-detCream border-3 border-detBrown rounded-2xl px-3 py-2 flex-wrap items-center justify-between gap-2 shrink-0">
-              <div id="fl-single-free-slots" class="flex flex-wrap gap-1.5 items-center flex-1"></div>
+              <div id="fl-single-free-slots" class="flex flex-wrap gap-1.5 items-center flex-1 max-h-20 overflow-y-auto custom-scroll"></div>
               <button onclick="GameEngine.checkSingleFlashlightFreeSentence()" class="det-btn bg-detSage text-white border-2 border-detBrown rounded-xl px-4 py-1.5 font-display font-bold text-sm">
                 ✅ CHECK SENTENCE
               </button>
@@ -2543,7 +2743,7 @@
         const cluesLayer = document.getElementById('single-fl-clues-layer');
         const rect = arena.getBoundingClientRect();
         const shuffledWords = shuffle(words.map((w, i) => ({ id: `fw_${i}`, word: w, orderIdx: i })));
-        const coords = generateScatteredCluePositions(shuffledWords.length, rect.width || 800, rect.height || 360, 105);
+        const coords = generateScatteredCluePositions(shuffledWords.length, rect.width || 900, rect.height || 360, 100);
 
         singleState.flClues = shuffledWords.map((item, idx) => ({
           id: item.id,
@@ -2561,7 +2761,7 @@
             <button id="fl-single-word-${c.id}"
                     onclick="GameEngine.handleSingleFlashlightSentenceTap('${c.id}')"
                     style="left:${c.x}px; top:${c.y}px; opacity:0;"
-                    class="flashlight-clue bg-detCream border-3 border-detMustard rounded-2xl px-4 py-2 shadow-lg font-display text-lg sm:text-xl font-bold text-detNavy">
+                    class="flashlight-clue bg-detCream border-2 border-detMustard rounded-xl ${tilePad} shadow-lg font-display font-bold text-detNavy">
               <span class="preserve-case">${UI.escapeHTML(c.word)}</span>
             </button>`
           )
@@ -2606,15 +2806,15 @@
         if (searchMode === 'sequential') {
           const nextWord = words[singleState.flFoundWords.size];
           if (targetEl && nextWord) {
-            targetEl.innerHTML = `SEQUENTIAL SEARCH • FIND NEXT WORD: <span class="preserve-case text-detMustard underline">${UI.escapeHTML(nextWord)}</span>`;
+            targetEl.innerHTML = `SEQUENTIAL (${singleState.flFoundWords.size}/${words.length}) • FIND: <span class="preserve-case text-detMustard underline">${UI.escapeHTML(nextWord)}</span>`;
           }
           if (progEl) {
             progEl.innerHTML = words
               .map((w, i) => {
                 const done = i < singleState.flFoundWords.size;
-                return `<span class="preserve-case px-2.5 py-0.5 rounded-lg text-xs font-display font-bold border ${
+                return `<span class="preserve-case px-2 py-0.5 rounded text-xs font-display font-bold border ${
                   done ? 'bg-detSage text-white border-detCream' : 'bg-detNavy/60 text-detCream/50 border-detCream/25'
-                }">${done ? UI.escapeHTML(w) : '•••'}</span>`;
+                }">${done ? UI.escapeHTML(w) : '••'}</span>`;
               })
               .join('');
           }
@@ -2670,7 +2870,7 @@
             if (singleState.flFoundWords.size >= words.length) {
               singleState.inputLocked = true;
               UI.toast('Sentence complete!', 'success');
-              setTimeout(() => setupSingleFlashlightSentenceRound(singleState.currentIdx + 1), 1000);
+              setTimeout(() => setupSingleFlashlightSentenceRound(singleState.currentIdx + 1), 950);
             }
           } else {
             AudioFX.wrong();
@@ -2683,7 +2883,6 @@
             UI.toast(`Looking for "${expectedWord}" next!`, 'warn');
           }
         } else {
-          // Free search: collect word into answer bar
           const alreadyCollected = singleState.flFreeCollected.some((x) => x.id === clue.id);
           if (alreadyCollected) return;
           AudioFX.click();
@@ -2710,7 +2909,7 @@
           AudioFX.correct();
           applySingleScore(true);
           UI.toast('Sentence reconstructed!', 'success');
-          setTimeout(() => setupSingleFlashlightSentenceRound(singleState.currentIdx + 1), 1000);
+          setTimeout(() => setupSingleFlashlightSentenceRound(singleState.currentIdx + 1), 950);
         } else {
           AudioFX.wrong();
           singleState.attemptsUsed += 1;
@@ -2718,7 +2917,7 @@
             singleState.inputLocked = true;
             applySingleScore(false);
             UI.toast(`Sentence was: "${expected}"`, 'warn');
-            setTimeout(() => setupSingleFlashlightSentenceRound(singleState.currentIdx + 1), 1400);
+            setTimeout(() => setupSingleFlashlightSentenceRound(singleState.currentIdx + 1), 1350);
           } else {
             UI.toast('Not quite—check word order, capitalization, and punctuation!', 'warn');
           }
@@ -2766,11 +2965,17 @@
       }
 
       /* =====================================================================
-       * B. SIMULTANEOUS SPLIT-SCREEN TEAM MODE (Word, Sentence & Flashlight)
+       * B. SIMULTANEOUS SPLIT-SCREEN TEAM MODE (Word, Sentence, Flashlight, Memory)
        * ===================================================================== */
       function createTeamState(teamNum, name, gameMode, contentType, rawItems, count, settings) {
         const teamQuestions = (settings.randomizeQuestions ? shuffle(rawItems) : [...rawItems]).slice(0, count);
         const teamBoard = settings.randomizeCards ? shuffle(teamQuestions) : [...teamQuestions];
+        const memoryDeck = shuffle(
+          teamQuestions.flatMap((item, idx) => [
+            { uid: `tm${teamNum}_a_${item.id}_${idx}`, pairId: item.id, kind: 'picture', word: item.word, image: item.image, matched: false },
+            { uid: `tm${teamNum}_b_${item.id}_${idx}`, pairId: item.id, kind: 'word', word: item.word, image: item.image, matched: false }
+          ])
+        );
 
         return {
           teamNum,
@@ -2794,7 +2999,12 @@
           sentenceTilesAnswer: [],
           flClues: [],
           flFoundWords: new Set(),
-          flFreeCollected: []
+          flFreeCollected: [],
+          memoryDeck,
+          memoryFlippedUids: [],
+          memoryMatchedPairs: new Set(),
+          memoryPage: 0,
+          memoryPerPage: 16
         };
       }
 
@@ -2819,6 +3029,8 @@
         const modeTitle =
           gameMode === 'flashlight'
             ? `🔦 FLASHLIGHT DETECTIVES (${contentType === 'word' ? 'WORDS' : 'SENTENCE'}) • SPLIT-SCREEN`
+            : gameMode === 'memory'
+            ? '🃏 MEMORY GAME • SPLIT-SCREEN RACE'
             : gameMode === 'word'
             ? '⚔️ WORD DETECTIVE • SPLIT-SCREEN RACE'
             : '⚔️ SENTENCE DETECTIVE • SPLIT-SCREEN RACE';
@@ -2844,6 +3056,11 @@
         } else if (gameMode === 'sentence') {
           renderTeamSentenceMemorize(1);
           renderTeamSentenceMemorize(2);
+        } else if (gameMode === 'memory') {
+          renderTeamMemoryBoard(1, true);
+          renderTeamMemoryBoard(2, true);
+          document.getElementById('t1-prompt-text').textContent = '👀 Memorize memory pairs!';
+          document.getElementById('t2-prompt-text').textContent = '👀 Memorize memory pairs!';
         } else {
           document.getElementById('t1-prompt-text').textContent = '🔦 Get ready to search in the dark!';
           document.getElementById('t2-prompt-text').textContent = '🔦 Get ready to search in the dark!';
@@ -2885,6 +3102,9 @@
             presentTeamWordTarget(teamNum);
           } else if (teamSession.gameMode === 'sentence') {
             beginTeamSentenceChallenge(teamNum);
+          } else if (teamSession.gameMode === 'memory') {
+            document.getElementById(`t${teamNum}-prompt-text`).textContent = '🃏 Flip & match pairs!';
+            renderTeamMemoryBoard(teamNum, false);
           } else {
             if (teamSession.contentType === 'word') {
               setupTeamFlashlightWordRound(teamNum);
@@ -2927,7 +3147,8 @@
       function updateTeamHUD(teamNum) {
         const ts = getTeamState(teamNum);
         if (!ts) return;
-        document.getElementById(`t${teamNum}-matched`).textContent = String(ts.matchedCards.size);
+        const matchedCount = ts.gameMode === 'memory' ? ts.memoryMatchedPairs.size : ts.matchedCards.size;
+        document.getElementById(`t${teamNum}-matched`).textContent = String(matchedCount);
         document.getElementById(`t${teamNum}-score`).textContent = String(ts.score);
 
         const timerEl = document.getElementById(`t${teamNum}-timer`);
@@ -2943,7 +3164,7 @@
         }
       }
 
-      /* Team Word Detective */
+      /* Team Word Detective (Dynamic Grid) */
       function renderTeamWordGrid(teamNum, isCovered) {
         const ts = getTeamState(teamNum);
         const stage = document.getElementById(`t${teamNum}-stage`);
@@ -2956,10 +3177,10 @@
 
         const displayMode = Store.state.settings.cardDisplayMode;
         const count = ts.boardCards.length;
-        const colsClass = count <= 4 ? 'grid-cols-2' : count <= 6 ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-2 sm:grid-cols-4';
+        const metrics = computeDynamicGridMetrics(count, stage.clientWidth || 440, stage.clientHeight || 320, true);
 
         stage.innerHTML = `
-          <div class="grid ${colsClass} gap-2 sm:gap-2.5 w-full">
+          <div style="display:grid; grid-template-columns: repeat(${metrics.cols}, minmax(0, 1fr)); gap: ${Math.max(6, Math.round(metrics.gapPx * 0.7))}px;" class="w-full">
             ${ts.boardCards
               .map((item, idx) => {
                 const isMatched = ts.matchedCards.has(item.id);
@@ -2967,22 +3188,22 @@
 
                 if (showFace) {
                   return `
-                    <div id="t${teamNum}-card-${item.id}" class="clue-card locked bg-detCream border-3 ${
+                    <div id="t${teamNum}-card-${item.id}" style="min-height:${Math.max(66, Math.round(metrics.cardH * 0.78))}px;" class="clue-card locked bg-detCream border-2 ${
                       isMatched ? 'border-detSage bg-detSage/15' : 'border-detBrown'
-                    } rounded-2xl p-2 flex flex-col items-center justify-center min-h-[104px] sm:min-h-[126px] relative">
+                    } rounded-2xl p-1.5 flex flex-col items-center justify-center relative">
                       ${
                         isMatched
-                          ? '<span class="absolute top-1 right-1 bg-detSage text-white text-[10px] font-black px-1.5 py-0.5 rounded-full">✔</span>'
+                          ? '<span class="absolute top-1 right-1 bg-detSage text-white text-[10px] font-black px-1.5 rounded-full">✔</span>'
                           : ''
                       }
                       ${
                         displayMode !== 'word'
-                          ? `<img src="${UI.escapeHTML(item.image || PresetArt.magnifyingGlass)}" onerror="this.src='${PresetArt.magnifyingGlass}'" class="w-14 h-14 sm:w-16 sm:h-16 object-contain mb-1 rounded-lg" />`
+                          ? `<img src="${UI.escapeHTML(item.image || PresetArt.magnifyingGlass)}" onerror="this.src='${PresetArt.magnifyingGlass}'" style="width:${Math.max(28, Math.round(metrics.imgPx * 0.72))}px; height:${Math.max(28, Math.round(metrics.imgPx * 0.72))}px;" class="object-contain mb-0.5 rounded-lg" />`
                           : ''
                       }
                       ${
                         displayMode !== 'picture'
-                          ? `<div class="preserve-case font-display text-sm sm:text-base font-bold text-detNavy text-center leading-tight">${UI.escapeHTML(item.word)}</div>`
+                          ? `<div class="preserve-case font-display text-xs sm:text-sm font-bold text-detNavy text-center leading-tight truncate w-full">${UI.escapeHTML(item.word)}</div>`
                           : ''
                       }
                     </div>
@@ -2990,12 +3211,11 @@
                 }
 
                 return `
-                  <button id="t${teamNum}-card-${item.id}" onclick="GameEngine.handleTeamWordGuess(${teamNum}, '${item.id}')" class="clue-card bg-detCream hover:bg-detBeige border-3 border-detBrown rounded-2xl p-2 flex flex-col items-center justify-center min-h-[104px] sm:min-h-[126px] relative cursor-pointer">
-                    <span class="absolute top-1.5 left-2 text-[10px] font-black text-detBrown/70">#${idx + 1}</span>
-                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-detBeige border-2 border-detBrown flex items-center justify-center mb-1">
-                      <span class="font-display text-2xl sm:text-3xl font-bold text-detCoral">?</span>
+                  <button id="t${teamNum}-card-${item.id}" style="min-height:${Math.max(66, Math.round(metrics.cardH * 0.78))}px;" onclick="GameEngine.handleTeamWordGuess(${teamNum}, '${item.id}')" class="clue-card bg-detCream hover:bg-detBeige border-2 border-detBrown rounded-2xl p-1.5 flex flex-col items-center justify-center relative cursor-pointer">
+                    <span class="absolute top-1 left-1.5 text-[10px] font-black text-detBrown/70">#${idx + 1}</span>
+                    <div class="w-9 h-9 rounded-xl bg-detBeige border-2 border-detBrown flex items-center justify-center">
+                      <span class="font-display text-xl font-bold text-detCoral">?</span>
                     </div>
-                    <span class="font-display text-[11px] font-bold text-detBrown">CLUE</span>
                   </button>
                 `;
               })
@@ -3023,7 +3243,6 @@
 
         document.getElementById(`t${teamNum}-prompt-text`).innerHTML = `
           Find: <span class="preserve-case text-detCoral underline decoration-detBrown">${UI.escapeHTML(target.word)}</span>
-          ${Store.state.settings.showHints && target.hint ? `<span class="preserve-case hidden sm:inline text-xs font-bold text-detBrown ml-1">(${UI.escapeHTML(target.hint)})</span>` : ''}
         `;
         document.getElementById(`t${teamNum}-prompt-extra`).innerHTML = `
           <span class="bg-detBeige border border-detBrown rounded-lg px-2 py-0.5 text-xs font-display font-bold text-detBrown">
@@ -3058,7 +3277,7 @@
               ts.currentQuestion += 1;
               presentTeamWordTarget(teamNum);
             }
-          }, 750);
+          }, 700);
         } else {
           AudioFX.wrong();
           ts.attempts += 1;
@@ -3068,10 +3287,6 @@
 
           if (cardEl) {
             cardEl.classList.add('animate-shake', 'border-detCoral', 'bg-detCoral/20');
-            cardEl.innerHTML = `
-              <img src="${UI.escapeHTML(guessed.image || PresetArt.magnifyingGlass)}" class="w-12 h-12 object-contain mb-0.5 rounded-lg" />
-              <div class="preserve-case font-display text-xs sm:text-sm font-bold text-detCoral truncate max-w-full">${UI.escapeHTML(guessed.word)}</div>
-            `;
           }
 
           const outOfTries = Store.state.settings.maxAttempts > 0 && ts.attempts >= Store.state.settings.maxAttempts;
@@ -3089,7 +3304,7 @@
               renderTeamWordGrid(teamNum, true);
               ts.inputLocked = false;
             }
-          }, 750);
+          }, 700);
         }
       }
 
@@ -3100,9 +3315,9 @@
         const sent = ts.questionOrder[ts.currentQuestion];
         document.getElementById(`t${teamNum}-prompt-text`).textContent = '👀 Memorize the sentence!';
         document.getElementById(`t${teamNum}-stage`).innerHTML = `
-          <div class="bg-detCream border-3 border-detBrown rounded-2xl p-4 sm:p-5 w-full text-center shadow-card">
-            ${sent.image ? `<img src="${UI.escapeHTML(sent.image)}" class="w-20 h-20 object-contain mx-auto mb-2 rounded-xl" />` : ''}
-            <p class="preserve-case font-display text-lg sm:text-2xl font-bold text-detNavy leading-snug">${UI.escapeHTML(sent.text)}</p>
+          <div class="bg-detCream border-3 border-detBrown rounded-2xl p-4 w-full text-center shadow-card">
+            ${sent.image ? `<img src="${UI.escapeHTML(sent.image)}" class="w-16 h-16 object-contain mx-auto mb-2 rounded-xl" />` : ''}
+            <p class="preserve-case font-display text-base sm:text-xl font-bold text-detNavy leading-snug">${UI.escapeHTML(sent.text)}</p>
           </div>
         `;
       }
@@ -3143,15 +3358,15 @@
         if (!ts || !stage || ts.completed) return;
 
         stage.innerHTML = `
-          <div class="w-full flex flex-col gap-2.5">
-            <div id="t${teamNum}-ans-zone" class="min-h-[64px] bg-detCream border-3 border-dashed border-detBrown/50 rounded-2xl p-2 flex flex-wrap items-center gap-1.5">
+          <div class="w-full flex flex-col gap-2">
+            <div id="t${teamNum}-ans-zone" class="min-h-[58px] max-h-[110px] overflow-y-auto custom-scroll bg-detCream border-2 border-dashed border-detBrown/50 rounded-2xl p-2 flex flex-wrap items-center gap-1.5">
               ${
                 ts.sentenceTilesAnswer.length === 0
                   ? '<span class="text-xs font-bold text-detBrown/60 mx-auto">Tap tiles below...</span>'
                   : ts.sentenceTilesAnswer
                       .map(
                         (t) => `
-                      <button onclick="GameEngine.moveTeamTile(${teamNum}, '${t.id}', 'answer')" class="preserve-case det-btn bg-detMustard text-detNavy border-2 border-detBrown rounded-xl px-3 py-1.5 font-display text-sm sm:text-base font-bold shadow-xs">
+                      <button onclick="GameEngine.moveTeamTile(${teamNum}, '${t.id}', 'answer')" class="preserve-case det-btn bg-detMustard text-detNavy border-2 border-detBrown rounded-xl px-2.5 py-1 font-display text-xs sm:text-sm font-bold">
                         ${UI.escapeHTML(t.word)}
                       </button>`
                       )
@@ -3159,18 +3374,18 @@
               }
             </div>
 
-            <div class="min-h-[64px] bg-detCream/75 border-2 border-detBrown/30 rounded-2xl p-2 flex flex-wrap items-center justify-center gap-1.5">
+            <div class="min-h-[58px] max-h-[120px] overflow-y-auto custom-scroll bg-detCream/75 border-2 border-detBrown/30 rounded-2xl p-2 flex flex-wrap items-center justify-center gap-1.5">
               ${ts.sentenceTilesBank
                 .map(
                   (t) => `
-                  <button onclick="GameEngine.moveTeamTile(${teamNum}, '${t.id}', 'bank')" class="preserve-case det-btn bg-detCream text-detNavy border-2 border-detBrown rounded-xl px-3 py-1.5 font-display text-sm sm:text-base font-bold shadow-xs">
+                  <button onclick="GameEngine.moveTeamTile(${teamNum}, '${t.id}', 'bank')" class="preserve-case det-btn bg-detCream text-detNavy border-2 border-detBrown rounded-xl px-2.5 py-1 font-display text-xs sm:text-sm font-bold">
                     ${UI.escapeHTML(t.word)}
                   </button>`
                 )
                 .join('')}
             </div>
 
-            <button onclick="GameEngine.checkTeamSentenceAnswer(${teamNum})" class="det-btn bg-detSage text-white border-3 border-detBrown rounded-xl py-2 px-4 font-display font-bold text-sm sm:text-base shadow-btn mx-auto">
+            <button onclick="GameEngine.checkTeamSentenceAnswer(${teamNum})" class="det-btn bg-detSage text-white border-2 border-detBrown rounded-xl py-1.5 px-4 font-display font-bold text-sm shadow-btn mx-auto">
               ✅ CHECK SENTENCE
             </button>
           </div>
@@ -3228,7 +3443,7 @@
               ts.currentQuestion += 1;
               beginTeamSentenceChallenge(teamNum);
             }
-          }, 800);
+          }, 750);
         } else {
           AudioFX.wrong();
           ts.attempts += 1;
@@ -3249,7 +3464,115 @@
                 ts.currentQuestion += 1;
                 beginTeamSentenceChallenge(teamNum);
               }
-            }, 950);
+            }, 900);
+          }
+        }
+      }
+
+      /* Team Memory Game (Independent Grid + Pagination) */
+      function renderTeamMemoryBoard(teamNum, peekAll = false) {
+        const ts = getTeamState(teamNum);
+        const stage = document.getElementById(`t${teamNum}-stage`);
+        if (!ts || !stage || ts.completed) return;
+
+        const perPage = ts.memoryPerPage;
+        const totalPages = Math.max(1, Math.ceil(ts.memoryDeck.length / perPage));
+        ts.memoryPage = Math.max(0, Math.min(totalPages - 1, ts.memoryPage));
+        const start = ts.memoryPage * perPage;
+        const pageCards = ts.memoryDeck.slice(start, start + perPage);
+        const metrics = computeDynamicGridMetrics(pageCards.length, stage.clientWidth || 440, stage.clientHeight || 280, true);
+
+        if (totalPages > 1) {
+          document.getElementById(`t${teamNum}-prompt-extra`).innerHTML = `
+            <div class="flex items-center gap-1">
+              <button onclick="GameEngine.changeTeamMemoryPage(${teamNum}, -1)" ${ts.memoryPage === 0 ? 'disabled' : ''} class="det-btn bg-detBeige border border-detBrown rounded px-1.5 py-0.5 text-xs font-bold">◀</button>
+              <span class="text-xs font-bold">${ts.memoryPage + 1}/${totalPages}</span>
+              <button onclick="GameEngine.changeTeamMemoryPage(${teamNum}, 1)" ${ts.memoryPage >= totalPages - 1 ? 'disabled' : ''} class="det-btn bg-detBeige border border-detBrown rounded px-1.5 py-0.5 text-xs font-bold">▶</button>
+            </div>
+          `;
+        }
+
+        stage.innerHTML = `
+          <div style="display:grid; grid-template-columns: repeat(${metrics.cols}, minmax(0, 1fr)); gap: 6px;" class="w-full">
+            ${pageCards
+              .map((card) => {
+                const isUp = peekAll || card.matched || ts.memoryFlippedUids.includes(card.uid);
+                if (isUp) {
+                  return `
+                    <button style="min-height:${Math.max(58, Math.round(metrics.cardH * 0.72))}px;" onclick="GameEngine.handleTeamMemoryFlip(${teamNum}, '${card.uid}')" class="clue-card bg-detCream border-2 ${
+                      card.matched ? 'border-detSage bg-detSage/15' : 'border-detBlue'
+                    } rounded-xl p-1 flex flex-col items-center justify-center">
+                      ${
+                        card.kind === 'picture'
+                          ? `<img src="${UI.escapeHTML(card.image || PresetArt.magnifyingGlass)}" class="w-9 h-9 object-contain rounded" />`
+                          : `<span class="preserve-case font-display text-xs font-bold text-detNavy truncate w-full text-center">${UI.escapeHTML(card.word)}</span>`
+                      }
+                    </button>
+                  `;
+                }
+                return `
+                  <button style="min-height:${Math.max(58, Math.round(metrics.cardH * 0.72))}px;" onclick="GameEngine.handleTeamMemoryFlip(${teamNum}, '${card.uid}')" class="clue-card bg-detNavy text-detMustard border-2 border-detBrown rounded-xl p-1 flex items-center justify-center font-display text-xl font-bold">?</button>
+                `;
+              })
+              .join('')}
+          </div>
+        `;
+      }
+
+      function changeTeamMemoryPage(teamNum, delta) {
+        const ts = getTeamState(teamNum);
+        if (!ts || ts.completed) return;
+        AudioFX.click();
+        ts.memoryPage += delta;
+        renderTeamMemoryBoard(teamNum, ts.phase === 'MEMORIZE');
+      }
+
+      function handleTeamMemoryFlip(teamNum, uid) {
+        const ts = getTeamState(teamNum);
+        if (!ts || ts.phase !== 'CHALLENGE' || ts.completed || ts.inputLocked) return;
+        if (ts.memoryFlippedUids.includes(uid)) return;
+        const card = ts.memoryDeck.find((c) => c.uid === uid);
+        if (!card || card.matched) return;
+
+        AudioFX.flip();
+        ts.memoryFlippedUids.push(uid);
+        renderTeamMemoryBoard(teamNum, false);
+
+        if (ts.memoryFlippedUids.length === 2) {
+          ts.inputLocked = true;
+          const [u1, u2] = ts.memoryFlippedUids;
+          const c1 = ts.memoryDeck.find((c) => c.uid === u1);
+          const c2 = ts.memoryDeck.find((c) => c.uid === u2);
+
+          if (c1 && c2 && c1.pairId === c2.pairId) {
+            setTimeout(() => {
+              if (ts.completed) return;
+              c1.matched = true;
+              c2.matched = true;
+              ts.memoryMatchedPairs.add(c1.pairId);
+              ts.memoryFlippedUids = [];
+              ts.inputLocked = false;
+              ts.correct += 1;
+              ts.score = Math.max(0, ts.score + Number(Store.state.settings.pointsCorrect || 10));
+              AudioFX.correct();
+              updateTeamHUD(teamNum);
+              renderTeamMemoryBoard(teamNum, false);
+
+              if (ts.memoryMatchedPairs.size >= ts.questionOrder.length) {
+                completeTeam(teamNum);
+              }
+            }, 350);
+          } else {
+            setTimeout(() => {
+              if (ts.completed) return;
+              AudioFX.wrong();
+              ts.memoryFlippedUids = [];
+              ts.inputLocked = false;
+              ts.incorrect += 1;
+              ts.score = Math.max(0, ts.score - Math.abs(Number(Store.state.settings.pointsPenalty || 0)));
+              updateTeamHUD(teamNum);
+              renderTeamMemoryBoard(teamNum, false);
+            }, 700);
           }
         }
       }
@@ -3268,6 +3591,9 @@
         const target = ts.questionOrder[ts.currentQuestion];
         const settings = Store.state.settings;
         const displayMode = settings.cardDisplayMode;
+        const totalClues = ts.boardCards.length;
+        const compactClue = totalClues > 20 ? 'min-w-[60px] p-1' : 'min-w-[76px] p-1.5';
+        const imgCls = totalClues > 20 ? 'w-8 h-8' : 'w-10 h-10';
 
         document.getElementById(`t${teamNum}-prompt-text`).innerHTML = `
           🔦 Find: <span class="preserve-case text-detCoral underline">${UI.escapeHTML(target.word)}</span>
@@ -3285,8 +3611,7 @@
         const arena = document.getElementById(`t${teamNum}-fl-arena`);
         const cluesLayer = document.getElementById(`t${teamNum}-fl-clues`);
         const rect = arena.getBoundingClientRect();
-        // Independently randomized positions per team
-        const coords = generateScatteredCluePositions(ts.boardCards.length, rect.width || 420, rect.height || 260, 88);
+        const coords = generateScatteredCluePositions(totalClues, rect.width || 440, rect.height || 260, 86);
 
         ts.flClues = ts.boardCards.map((item, idx) => {
           const isMatched = ts.matchedCards.has(item.id);
@@ -3307,10 +3632,10 @@
             <button id="fl-t${teamNum}-clue-${c.id}"
                     onclick="GameEngine.handleTeamFlashlightWordTap(${teamNum}, '${c.id}')"
                     style="left:${c.x}px; top:${c.y}px; opacity:${c.found ? '1' : '0'};"
-                    class="flashlight-clue bg-detCream border-2 ${c.found ? 'border-detSage bg-detSage/20' : 'border-detMustard'} rounded-xl p-1.5 shadow-md flex flex-col items-center justify-center min-w-[76px]">
+                    class="flashlight-clue bg-detCream border-2 ${c.found ? 'border-detSage bg-detSage/20' : 'border-detMustard'} rounded-xl ${compactClue} shadow-md flex flex-col items-center justify-center">
               ${
                 displayMode !== 'word'
-                  ? `<img src="${UI.escapeHTML(c.image || PresetArt.magnifyingGlass)}" class="w-10 h-10 object-contain rounded mb-0.5" />`
+                  ? `<img src="${UI.escapeHTML(c.image || PresetArt.magnifyingGlass)}" class="${imgCls} object-contain rounded mb-0.5" />`
                   : ''
               }
               ${
@@ -3435,7 +3760,7 @@
         const cluesLayer = document.getElementById(`t${teamNum}-fl-clues`);
         const rect = arena.getBoundingClientRect();
         const shuffled = shuffle(words.map((w, i) => ({ id: `tfw_${teamNum}_${i}`, word: w })));
-        const coords = generateScatteredCluePositions(shuffled.length, rect.width || 420, rect.height || 260, 82);
+        const coords = generateScatteredCluePositions(shuffled.length, rect.width || 440, rect.height || 260, 78);
 
         ts.flClues = shuffled.map((item, idx) => ({
           id: item.id,
@@ -3452,7 +3777,7 @@
             <button id="fl-t${teamNum}-word-${c.id}"
                     onclick="GameEngine.handleTeamFlashlightSentenceTap(${teamNum}, '${c.id}')"
                     style="left:${c.x}px; top:${c.y}px; opacity:0;"
-                    class="flashlight-clue bg-detCream border-2 border-detMustard rounded-xl px-3 py-1.5 shadow-md font-display text-sm font-bold text-detNavy">
+                    class="flashlight-clue bg-detCream border-2 border-detMustard rounded-xl px-2.5 py-1 shadow-md font-display text-xs sm:text-sm font-bold text-detNavy">
               <span class="preserve-case">${UI.escapeHTML(c.word)}</span>
             </button>`
           )
@@ -3544,6 +3869,8 @@
           presentTeamWordTarget(teamNum);
         } else if (teamSession.gameMode === 'sentence') {
           beginTeamSentenceChallenge(teamNum);
+        } else if (teamSession.gameMode === 'memory') {
+          renderTeamMemoryBoard(teamNum, false);
         } else if (teamSession.contentType === 'word') {
           setupTeamFlashlightWordRound(teamNum);
         } else {
@@ -3573,6 +3900,7 @@
         const stage = document.getElementById(`t${teamNum}-stage`);
         document.getElementById(`t${teamNum}-prompt-text`).textContent = '🏆 Finished!';
         document.getElementById(`t${teamNum}-prompt-extra`).innerHTML = '';
+        const matchedCount = ts.gameMode === 'memory' ? ts.memoryMatchedPairs.size : ts.matchedCards.size;
         if (stage) {
           stage.innerHTML = `
             <div class="bg-detCream border-4 border-detBrown rounded-3xl p-5 text-center shadow-card animate-pop w-full max-w-sm">
@@ -3582,7 +3910,7 @@
                 CASE SOLVED!
               </div>
               <div class="text-sm font-extrabold text-detBrown">
-                Matched/Solved: ${ts.matchedCards.size}/${teamSession.totalCount} • Score: ${ts.score} pts
+                Matched/Solved: ${matchedCount}/${teamSession.totalCount} • Score: ${ts.score} pts
               </div>
               <div class="text-xs font-bold text-detBrown/75 mt-1">Waiting for other team to finish...</div>
             </div>
@@ -3590,7 +3918,6 @@
         }
       }
 
-      /* Final Split-Screen Competition Results (Winner by most matched/solved clues + time tiebreaker / draw) */
       function finishSimultaneousTeamResults() {
         clearAllTimers();
         AudioFX.fanfare();
@@ -3598,8 +3925,8 @@
         document.getElementById('screen-results').classList.remove('hidden');
         App.currentScreen = 'RESULTS';
 
-        const m1 = team1State.matchedCards.size;
-        const m2 = team2State.matchedCards.size;
+        const m1 = team1State.gameMode === 'memory' ? team1State.memoryMatchedPairs.size : team1State.matchedCards.size;
+        const m2 = team2State.gameMode === 'memory' ? team2State.memoryMatchedPairs.size : team2State.matchedCards.size;
 
         let headline = "IT'S A DRAW!";
         let sub = 'Both detective teams found the exact same number of clues in the same time!';
@@ -3674,6 +4001,9 @@
         handleSingleDropToBank,
         clearSingleSentenceTiles,
         checkSingleSentenceAnswer,
+        beginSingleMemoryChallenge,
+        changeSingleMemoryPage,
+        handleSingleMemoryFlip,
         handleSingleFlashlightWordTap,
         handleSingleFlashlightSentenceTap,
         removeSingleFlashlightFreeWord,
@@ -3683,6 +4013,8 @@
         moveTeamTile,
         clearTeamSentenceTiles,
         checkTeamSentenceAnswer,
+        changeTeamMemoryPage,
+        handleTeamMemoryFlip,
         handleTeamFlashlightWordTap,
         handleTeamFlashlightSentenceTap,
         confirmQuit
@@ -3690,7 +4022,7 @@
     })();
 
     /* =========================================================================
-     * 8. TEACHER CONTROL CENTER (Preserves Exact Casing & Punctuation)
+     * 8. TEACHER CONTROL CENTER (Unlimited Entries, Exact Case & Punctuation)
      * ========================================================================= */
     const TeacherUI = (() => {
       let currentTab = 'words';
@@ -3734,7 +4066,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
             <div class="lg:col-span-5 bg-detCream border-4 border-detBrown rounded-3xl p-5 shadow-card h-fit">
               <div class="flex items-center justify-between mb-3">
-                <h3 class="font-display text-xl font-bold text-detNavy">${editingItem ? '✏️ Edit Vocabulary Word' : '➕ Add Vocabulary Word'}</h3>
+                <h3 class="font-display text-xl font-bold text-detNavy">${editingItem ? '✏️ Edit Vocabulary Word' : '➕ Add Vocabulary Word (Unlimited)'}</h3>
                 ${editingItem ? `<button onclick="TeacherUI.cancelEditWord()" class="text-xs font-black text-detCoral underline">Cancel Edit</button>` : ''}
               </div>
 
@@ -3841,7 +4173,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
             <div class="lg:col-span-5 bg-detCream border-4 border-detBrown rounded-3xl p-5 shadow-card h-fit">
               <div class="flex items-center justify-between mb-3">
-                <h3 class="font-display text-xl font-bold text-detNavy">${editingItem ? '✏️ Edit Sentence' : '➕ Add Sentence'}</h3>
+                <h3 class="font-display text-xl font-bold text-detNavy">${editingItem ? '✏️ Edit Sentence' : '➕ Add Sentence (Any Length)'}</h3>
                 ${editingItem ? `<button onclick="TeacherUI.cancelEditSentence()" class="text-xs font-black text-detCoral underline">Cancel</button>` : ''}
               </div>
 
@@ -3929,7 +4261,7 @@
           <div class="bg-detCream border-4 border-detBrown rounded-3xl p-5 shadow-card">
             <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
               <div>
-                <h3 class="font-display text-2xl font-bold text-detNavy">📸 Detective Image Manager</h3>
+                <h3 class="font-display text-2xl font-bold text-detNavy">📸 Detective Image Manager (Unlimited)</h3>
                 <p class="text-xs sm:text-sm font-bold text-detBrown">Upload images, paste directly with Ctrl+V / iPad paste, or import from an image URL.</p>
               </div>
               <div class="flex flex-wrap gap-2">
@@ -4063,112 +4395,60 @@
             <div class="bg-detCream border-4 border-detBrown rounded-3xl p-5 shadow-card space-y-4">
               <h3 class="font-display text-2xl font-bold text-detNavy">📥 Import Game Set (.JSON)</h3>
               <p class="text-xs sm:text-sm font-bold text-detBrown">
-                Import a JSON set without altering original letter case or silently overwriting existing sets.
+                Select a previously exported JSON file to inspect its contents and choose how to import.
               </p>
 
-              <button onclick="document.getElementById('hidden-json-import').click()" class="det-btn w-full bg-detCoral text-white border-3 border-detBrown rounded-2xl py-4 px-5 font-display text-lg font-bold shadow-btn flex items-center justify-center gap-2">
-                <span>📂</span> <span>SELECT JSON FILE TO IMPORT</span>
+              <button onclick="document.getElementById('hidden-json-import').click()" class="det-btn w-full bg-detBeige hover:bg-detCaramel/50 text-detNavy border-3 border-dashed border-detBrown rounded-2xl py-5 px-4 font-display font-bold text-lg flex flex-col items-center gap-1">
+                <span class="text-3xl">📂</span>
+                <span>Choose JSON File to Import</span>
               </button>
 
-              ${
-                pendingImportData
-                  ? `
-                  <div class="bg-detBeige border-3 border-detBrown rounded-2xl p-4 space-y-3 animate-pop">
-                    <div class="preserve-case font-display text-lg font-bold text-detNavy">📋 Ready to Import: ${UI.escapeHTML(pendingImportData.label)}</div>
-                    <div class="text-xs font-extrabold text-detBrown">
-                      Words: ${pendingImportData.wordCount} • Sentences: ${pendingImportData.sentenceCount} • Images: ${pendingImportData.imageCount}
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                      <button onclick="TeacherUI.commitImport('new')" class="det-btn bg-detSage text-white border-2 border-detBrown rounded-xl py-2 px-2 font-display font-bold text-xs">Save as New Set</button>
-                      <button onclick="TeacherUI.commitImport('merge')" class="det-btn bg-detMustard text-detBrown border-2 border-detBrown rounded-xl py-2 px-2 font-display font-bold text-xs">Merge Into Current</button>
-                      <button onclick="TeacherUI.commitImport('replace')" class="det-btn bg-detCoral text-white border-2 border-detBrown rounded-xl py-2 px-2 font-display font-bold text-xs">Replace Current</button>
-                    </div>
-                  </div>`
-                  : ''
-              }
+              <div id="tc-import-preview" class="${pendingImportData ? '' : 'hidden'} bg-detBeige border-3 border-detBrown rounded-2xl p-4 space-y-3">
+                <div id="tc-import-summary" class="text-sm font-extrabold text-detNavy"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <button onclick="TeacherUI.applyImport('replace')" class="det-btn bg-detCoral text-white border-2 border-detBrown rounded-xl py-2 px-2 font-display font-bold text-xs">
+                    Replace Active
+                  </button>
+                  <button onclick="TeacherUI.applyImport('append')" class="det-btn bg-detBlue text-white border-2 border-detBrown rounded-xl py-2 px-2 font-display font-bold text-xs">
+                    Append to Active
+                  </button>
+                  <button onclick="TeacherUI.applyImport('new')" class="det-btn bg-detSage text-white border-2 border-detBrown rounded-xl py-2 px-2 font-display font-bold text-xs">
+                    Save as New Set
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         `;
+        if (pendingImportData) this.showImportSummary();
       }
 
       function renderSettingsTab(container) {
         const s = Store.state.settings;
         container.innerHTML = `
-          <div class="bg-detCream border-4 border-detBrown rounded-3xl p-5 sm:p-6 shadow-card space-y-5">
+          <div class="bg-detCream border-4 border-detBrown rounded-3xl p-5 sm:p-6 shadow-card space-y-6">
             <div>
-              <h3 class="font-display text-xl font-bold text-detNavy mb-2">🎚️ Quick Difficulty Presets</h3>
-              <div class="grid grid-cols-3 gap-3 max-w-lg">
-                <button onclick="Store.applyDifficultyPreset('easy'); TeacherUI.render(); UI.toast('Easy preset applied!', 'success')" class="det-btn py-2.5 rounded-xl border-3 border-detBrown font-display font-bold ${s.difficulty === 'easy' ? 'bg-detSage text-white' : 'bg-detBeige text-detBrown'}">🌱 Easy</button>
-                <button onclick="Store.applyDifficultyPreset('normal'); TeacherUI.render(); UI.toast('Normal preset applied!', 'success')" class="det-btn py-2.5 rounded-xl border-3 border-detBrown font-display font-bold ${s.difficulty === 'normal' ? 'bg-detMustard text-detBrown' : 'bg-detBeige text-detBrown'}">🔎 Normal</button>
-                <button onclick="Store.applyDifficultyPreset('hard'); TeacherUI.render(); UI.toast('Hard preset applied!', 'success')" class="det-btn py-2.5 rounded-xl border-3 border-detBrown font-display font-bold ${s.difficulty === 'hard' ? 'bg-detCoral text-white' : 'bg-detBeige text-detBrown'}">🔥 Hard</button>
+              <h3 class="font-display text-xl font-bold text-detNavy mb-3">🎚️ Difficulty Presets</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <button onclick="TeacherUI.applyPreset('easy')" class="det-btn py-3 rounded-2xl border-3 border-detBrown font-display font-bold ${s.difficulty === 'easy' ? 'bg-detSage text-white' : 'bg-detBeige text-detNavy'}">😊 Easy</button>
+                <button onclick="TeacherUI.applyPreset('normal')" class="det-btn py-3 rounded-2xl border-3 border-detBrown font-display font-bold ${s.difficulty === 'normal' ? 'bg-detMustard text-detBrown' : 'bg-detBeige text-detNavy'}">🕵️ Normal</button>
+                <button onclick="TeacherUI.applyPreset('hard')" class="det-btn py-3 rounded-2xl border-3 border-detBrown font-display font-bold ${s.difficulty === 'hard' ? 'bg-detCoral text-white' : 'bg-detBeige text-detNavy'}">🔥 Hard</button>
               </div>
             </div>
 
-            <!-- Flashlight Detectives Settings Section -->
-            <div class="bg-detNavy text-white border-3 border-detBrown rounded-2xl p-4 space-y-3">
-              <h4 class="font-display text-lg font-bold text-detMustard">🔦 Flashlight Detectives Settings</h4>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-detNavy">
-                <div>
-                  <label class="block text-xs font-black text-detCream mb-1">Spotlight Size</label>
-                  <select onchange="Store.updateSetting('flashlightSize', this.value)" class="w-full bg-detCream border-2 border-detBrown rounded-xl px-2.5 py-1.5 font-bold text-sm">
-                    <option value="small" ${s.flashlightSize === 'small' ? 'selected' : ''}>Small Beam</option>
-                    <option value="medium" ${s.flashlightSize === 'medium' ? 'selected' : ''}>Medium Beam</option>
-                    <option value="large" ${s.flashlightSize === 'large' ? 'selected' : ''}>Large Beam</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label class="block text-xs font-black text-detCream mb-1">Light Brightness</label>
-                  <select onchange="Store.updateSetting('flashlightBrightness', Number(this.value))" class="w-full bg-detCream border-2 border-detBrown rounded-xl px-2.5 py-1.5 font-bold text-sm">
-                    <option value="0.7" ${Number(s.flashlightBrightness) === 0.7 ? 'selected' : ''}>Soft Dim (70%)</option>
-                    <option value="0.92" ${Number(s.flashlightBrightness) === 0.92 ? 'selected' : ''}>Bright Beam (92%)</option>
-                    <option value="1" ${Number(s.flashlightBrightness) === 1 ? 'selected' : ''}>High Beam (100%)</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label class="block text-xs font-black text-detCream mb-1">Beam Edge Style</label>
-                  <select onchange="Store.updateSetting('flashlightSoftEdge', this.value === 'soft')" class="w-full bg-detCream border-2 border-detBrown rounded-xl px-2.5 py-1.5 font-bold text-sm">
-                    <option value="soft" ${s.flashlightSoftEdge ? 'selected' : ''}>Soft Feathered Edge</option>
-                    <option value="sharp" ${!s.flashlightSoftEdge ? 'selected' : ''}>Crisper Spotlight Edge</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label class="block text-xs font-black text-detCream mb-1">Sentence Search Mode</label>
-                  <select onchange="Store.updateSetting('sentenceSearchMode', this.value)" class="w-full bg-detCream border-2 border-detBrown rounded-xl px-2.5 py-1.5 font-bold text-sm">
-                    <option value="sequential" ${s.sentenceSearchMode === 'sequential' ? 'selected' : ''}>Sequential Search (In Order)</option>
-                    <option value="free" ${s.sentenceSearchMode === 'free' ? 'selected' : ''}>Free Search (Collect & Check)</option>
-                  </select>
-                </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 border-t-2 border-detBrown/20">
+              <div>
+                <label class="block text-xs font-black text-detBrown mb-1">Memorization Countdown (10–120s)</label>
+                <input type="number" min="10" max="120" value="${s.memorizeTime}" onchange="Store.updateSetting('memorizeTime', Math.min(120, Math.max(10, Number(this.value) || 15)))" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy" />
               </div>
 
-              <div class="flex flex-wrap gap-4 pt-1 text-xs font-bold text-detCream">
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" ${s.flashlightSound ? 'checked' : ''} onchange="Store.updateSetting('flashlightSound', this.checked)" class="w-4 h-4 accent-detMustard" />
-                  <span>Subtle Flashlight Movement Sound</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div class="bg-detBeige/70 border-2 border-detBrown/30 rounded-2xl p-3.5">
-                <label class="block text-xs font-black text-detBrown mb-1">Memorization Duration</label>
-                <select onchange="Store.updateSetting('memorizeTime', Number(this.value))" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy">
-                  ${[10, 15, 20, 30, 45, 60, 90, 120].map((v) => `<option value="${v}" ${s.memorizeTime === v ? 'selected' : ''}>${v} Seconds</option>`).join('')}
-                </select>
+              <div>
+                <label class="block text-xs font-black text-detBrown mb-1">Challenge Timer (0 = No Limit)</label>
+                <input type="number" min="0" max="300" value="${s.challengeTimer}" onchange="Store.updateSetting('challengeTimer', Math.max(0, Number(this.value) || 0))" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy" />
               </div>
 
-              <div class="bg-detBeige/70 border-2 border-detBrown/30 rounded-2xl p-3.5">
-                <label class="block text-xs font-black text-detBrown mb-1">Challenge Timer (Per Clue)</label>
-                <select onchange="Store.updateSetting('challengeTimer', Number(this.value))" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy">
-                  <option value="0" ${s.challengeTimer === 0 ? 'selected' : ''}>No Time Limit (∞)</option>
-                  ${[15, 20, 30, 45, 60].map((v) => `<option value="${v}" ${s.challengeTimer === v ? 'selected' : ''}>${v} Seconds</option>`).join('')}
-                </select>
-              </div>
-
-              <div class="bg-detBeige/70 border-2 border-detBrown/30 rounded-2xl p-3.5">
-                <label class="block text-xs font-black text-detBrown mb-1">Word Card Display</label>
+              <div>
+                <label class="block text-xs font-black text-detBrown mb-1">Clue Display Mode</label>
                 <select onchange="Store.updateSetting('cardDisplayMode', this.value)" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy">
                   <option value="both" ${s.cardDisplayMode === 'both' ? 'selected' : ''}>Picture + Word</option>
                   <option value="picture" ${s.cardDisplayMode === 'picture' ? 'selected' : ''}>Picture Only</option>
@@ -4176,174 +4456,119 @@
                 </select>
               </div>
 
-              <div class="bg-detBeige/70 border-2 border-detBrown/30 rounded-2xl p-3.5">
-                <label class="block text-xs font-black text-detBrown mb-1">Attempts Allowed</label>
+              <div>
+                <label class="block text-xs font-black text-detBrown mb-1">Max Attempts Per Clue (0 = Unlimited)</label>
                 <select onchange="Store.updateSetting('maxAttempts', Number(this.value))" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy">
-                  <option value="0" ${s.maxAttempts === 0 ? 'selected' : ''}>Unlimited Attempts</option>
+                  <option value="0" ${s.maxAttempts === 0 ? 'selected' : ''}>Unlimited</option>
                   <option value="1" ${s.maxAttempts === 1 ? 'selected' : ''}>1 Attempt</option>
                   <option value="2" ${s.maxAttempts === 2 ? 'selected' : ''}>2 Attempts</option>
                   <option value="3" ${s.maxAttempts === 3 ? 'selected' : ''}>3 Attempts</option>
                 </select>
               </div>
 
-              <div class="bg-detBeige/70 border-2 border-detBrown/30 rounded-2xl p-3.5">
-                <label class="block text-xs font-black text-detBrown mb-1">Points Per Correct Answer</label>
-                <input type="number" min="1" max="100" value="${s.pointsCorrect}" onchange="Store.updateSetting('pointsCorrect', Number(this.value) || 10)" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy" />
+              <div>
+                <label class="block text-xs font-black text-detBrown mb-1">Points for Correct Answer</label>
+                <input type="number" min="1" max="100" value="${s.pointsCorrect}" onchange="Store.updateSetting('pointsCorrect', Math.max(1, Number(this.value) || 10))" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy" />
               </div>
 
-              <div class="bg-detBeige/70 border-2 border-detBrown/30 rounded-2xl p-3.5">
-                <label class="block text-xs font-black text-detBrown mb-1">Wrong Answer Penalty</label>
-                <select onchange="Store.updateSetting('pointsPenalty', Number(this.value))" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy">
-                  <option value="0" ${s.pointsPenalty === 0 ? 'selected' : ''}>0 pts (Encouraging)</option>
-                  <option value="2" ${s.pointsPenalty === 2 ? 'selected' : ''}>-2 pts</option>
-                  <option value="5" ${s.pointsPenalty === 5 ? 'selected' : ''}>-5 pts</option>
-                </select>
+              <div>
+                <label class="block text-xs font-black text-detBrown mb-1">Wrong Answer Penalty Points</label>
+                <input type="number" min="0" max="50" value="${s.pointsPenalty}" onchange="Store.updateSetting('pointsPenalty', Math.max(0, Number(this.value) || 0))" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy" />
               </div>
             </div>
 
-            <div class="flex flex-wrap gap-4 pt-2">
-              <label class="flex items-center gap-2 bg-detBeige border-2 border-detBrown rounded-xl px-4 py-2 cursor-pointer font-bold text-sm">
-                <input type="checkbox" ${s.randomizeCards ? 'checked' : ''} onchange="Store.updateSetting('randomizeCards', this.checked)" class="w-4 h-4 accent-detBrown" />
-                <span>Shuffle Card Positions</span>
+            <div class="pt-4 border-t-2 border-detBrown/20">
+              <h3 class="font-display text-xl font-bold text-detNavy mb-3">🔦 Flashlight Detectives Settings</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div>
+                  <label class="block text-xs font-black text-detBrown mb-1">Spotlight Size</label>
+                  <select onchange="Store.updateSetting('flashlightSize', this.value)" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy">
+                    <option value="small" ${s.flashlightSize === 'small' ? 'selected' : ''}>Small Beam</option>
+                    <option value="medium" ${s.flashlightSize === 'medium' ? 'selected' : ''}>Medium Beam</option>
+                    <option value="large" ${s.flashlightSize === 'large' ? 'selected' : ''}>Large Beam</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-black text-detBrown mb-1">Sentence Search Mode</label>
+                  <select onchange="Store.updateSetting('sentenceSearchMode', this.value)" class="w-full bg-white border-2 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy">
+                    <option value="sequential" ${s.sentenceSearchMode === 'sequential' ? 'selected' : ''}>Sequential Word Order</option>
+                    <option value="free" ${s.sentenceSearchMode === 'free' ? 'selected' : ''}>Free Collection + Check</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-black text-detBrown mb-1">Spotlight Brightness (${Math.round((s.flashlightBrightness || 0.92) * 100)}%)</label>
+                  <input type="range" min="0.5" max="1" step="0.02" value="${s.flashlightBrightness || 0.92}" onchange="Store.updateSetting('flashlightBrightness', Number(this.value)); TeacherUI.render();" class="w-full accent-detNavy mt-2" />
+                </div>
+
+                <div class="flex flex-col justify-center gap-2 pt-2">
+                  <label class="flex items-center gap-2 text-xs font-black text-detNavy cursor-pointer">
+                    <input type="checkbox" ${s.flashlightSoftEdge ? 'checked' : ''} onchange="Store.updateSetting('flashlightSoftEdge', this.checked)" class="w-4 h-4 accent-detSage" />
+                    Soft Feathered Edge
+                  </label>
+                  <label class="flex items-center gap-2 text-xs font-black text-detNavy cursor-pointer">
+                    <input type="checkbox" ${s.flashlightSound ? 'checked' : ''} onchange="Store.updateSetting('flashlightSound', this.checked)" class="w-4 h-4 accent-detSage" />
+                    Subtle Beam Sweep Sound
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t-2 border-detBrown/20 flex flex-wrap gap-3">
+              <label class="flex items-center gap-2 bg-detBeige px-3.5 py-2 rounded-xl border-2 border-detBrown text-xs font-black text-detNavy cursor-pointer">
+                <input type="checkbox" ${s.showHints ? 'checked' : ''} onchange="Store.updateSetting('showHints', this.checked)" class="w-4 h-4 accent-detSage" />
+                Show Hints During Play
               </label>
-              <label class="flex items-center gap-2 bg-detBeige border-2 border-detBrown rounded-xl px-4 py-2 cursor-pointer font-bold text-sm">
-                <input type="checkbox" ${s.randomizeQuestions ? 'checked' : ''} onchange="Store.updateSetting('randomizeQuestions', this.checked)" class="w-4 h-4 accent-detBrown" />
-                <span>Randomize Question Order</span>
+              <label class="flex items-center gap-2 bg-detBeige px-3.5 py-2 rounded-xl border-2 border-detBrown text-xs font-black text-detNavy cursor-pointer">
+                <input type="checkbox" ${s.randomizeCards ? 'checked' : ''} onchange="Store.updateSetting('randomizeCards', this.checked)" class="w-4 h-4 accent-detSage" />
+                Shuffle Board Cards
               </label>
-              <label class="flex items-center gap-2 bg-detBeige border-2 border-detBrown rounded-xl px-4 py-2 cursor-pointer font-bold text-sm">
-                <input type="checkbox" ${s.showHints ? 'checked' : ''} onchange="Store.updateSetting('showHints', this.checked)" class="w-4 h-4 accent-detBrown" />
-                <span>Show Clues / Hints</span>
+              <label class="flex items-center gap-2 bg-detBeige px-3.5 py-2 rounded-xl border-2 border-detBrown text-xs font-black text-detNavy cursor-pointer">
+                <input type="checkbox" ${s.randomizeQuestions ? 'checked' : ''} onchange="Store.updateSetting('randomizeQuestions', this.checked)" class="w-4 h-4 accent-detSage" />
+                Randomize Clue Order
               </label>
             </div>
           </div>
         `;
       }
 
-      let uploadTarget = 'word';
-
-      function triggerUpload(target) {
-        uploadTarget = target;
-        document.getElementById('hidden-image-upload').click();
-      }
-
-      function selectDraftImage(target, url) {
-        if (target === 'word') {
-          draftWordImage = url;
-          const prev = document.getElementById('tc-word-img-preview');
-          if (prev) prev.src = url || PresetArt.apple;
-        } else if (target === 'sentence') {
-          draftSentenceImage = url;
-          const prev = document.getElementById('tc-sent-img-preview');
-          if (prev) {
-            prev.src = url || PresetArt.magnifyingGlass;
-            prev.classList.toggle('opacity-40', !url);
-          }
-        }
-      }
-
-      async function pasteFromClipboard(target) {
-        if (!navigator.clipboard || !navigator.clipboard.read) {
-          UI.toast('Press Ctrl+V (or Cmd+V / iPad Paste) to paste an image directly!', 'info');
-          return;
-        }
-        try {
-          const items = await navigator.clipboard.read();
-          for (const item of items) {
-            const imgType = item.types.find((t) => t.startsWith('image/'));
-            if (imgType) {
-              const blob = await item.getType(imgType);
-              const dataUrl = await UI.compressImageFile(blob);
-              applyNewDataUrl(target, dataUrl, 'Pasted Clue');
-              UI.toast('Image pasted from clipboard!', 'success');
-              return;
-            }
-          }
-          UI.toast('No image found on clipboard. Copy an image first!', 'warn');
-        } catch (err) {
-          UI.toast('Clipboard read blocked—press Ctrl+V on the page instead!', 'warn');
-        }
-      }
-
-      function applyImageUrl(target) {
-        const inputId = target === 'word' ? 'tc-word-url' : 'tc-gallery-url';
-        const input = document.getElementById(inputId);
-        const url = input?.value.trim();
-        if (!url) {
-          UI.toast('Please enter a valid image URL.', 'warn');
-          return;
-        }
-        const testImg = new Image();
-        testImg.onload = () => {
-          applyNewDataUrl(target, url, 'Web Image');
-          if (input) input.value = '';
-          UI.toast('Image URL loaded!', 'success');
-        };
-        testImg.onerror = () => {
-          UI.toast('Could not load that URL. Try uploading or pasting the image!', 'error');
-        };
-        testImg.src = url;
-      }
-
-      function applyNewDataUrl(target, dataUrl, label) {
-        Store.state.imageGallery.unshift({
-          id: `img_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`,
-          name: label,
-          url: dataUrl
-        });
-        Store.saveAll();
-
-        if (target === 'word') selectDraftImage('word', dataUrl);
-        else if (target === 'sentence') selectDraftImage('sentence', dataUrl);
-        else render();
-      }
-
-      async function handleGalleryDrop(ev) {
-        ev.preventDefault();
-        const files = Array.from(ev.dataTransfer?.files || []);
-        for (const f of files) {
-          if (f.type.startsWith('image/')) {
-            const dataUrl = await UI.compressImageFile(f);
-            applyNewDataUrl('gallery', dataUrl, f.name.replace(/\.[^.]+$/, ''));
-          }
-        }
-        UI.toast('Dropped images added to library!', 'success');
-      }
-
-      function deleteGalleryImage(id) {
-        Store.state.imageGallery = Store.state.imageGallery.filter((i) => i.id !== id);
-        Store.saveAll();
-        render();
-      }
-
+      /* Word & Sentence CRUD Actions */
       function saveWordEntry() {
-        const word = document.getElementById('tc-word-input')?.value.trim();
-        const hint = document.getElementById('tc-word-hint')?.value.trim();
-        const category = document.getElementById('tc-word-cat')?.value.trim() || 'General';
+        const wordEl = document.getElementById('tc-word-input');
+        const hintEl = document.getElementById('tc-word-hint');
+        const catEl = document.getElementById('tc-word-cat');
+        const word = (wordEl?.value || '').trim();
         if (!word) {
-          UI.toast('Please enter a vocabulary word!', 'warn');
+          UI.toast('Please enter a vocabulary word first.', 'warn');
           return;
         }
-        const set = Store.getActiveWordSet();
+
+        const activeSet = Store.getActiveWordSet();
+        const img = draftWordImage || PresetArt.magnifyingGlass;
+
         if (editingWordId) {
-          const item = set.items.find((i) => i.id === editingWordId);
+          const item = activeSet.items.find((i) => i.id === editingWordId);
           if (item) {
             item.word = word;
-            item.hint = hint;
-            item.category = category;
-            item.image = draftWordImage || PresetArt.apple;
+            item.hint = (hintEl?.value || '').trim();
+            item.category = (catEl?.value || 'General').trim();
+            item.image = img;
           }
           editingWordId = null;
           UI.toast(`Updated "${word}"!`, 'success');
         } else {
-          set.items.push({
-            id: `w_${Date.now()}`,
+          activeSet.items.push({
+            id: `w_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
             word,
-            hint,
-            category,
-            image: draftWordImage || PresetArt.apple
+            hint: (hintEl?.value || '').trim(),
+            category: (catEl?.value || 'General').trim(),
+            image: img
           });
-          UI.toast(`Added "${word}" to ${set.name}!`, 'success');
+          UI.toast(`Added "${word}" (${activeSet.items.length} words in set)!`, 'success');
         }
+
+        draftWordImage = PresetArt.apple;
         Store.saveAll();
         render();
       }
@@ -4358,6 +4583,7 @@
 
       function cancelEditWord() {
         editingWordId = null;
+        draftWordImage = PresetArt.apple;
         render();
       }
 
@@ -4365,8 +4591,9 @@
         const set = Store.getActiveWordSet();
         const item = set.items.find((i) => i.id === id);
         if (!item) return;
-        set.items.push({ ...item, id: `w_${Date.now()}`, word: `${item.word} (copy)` });
+        set.items.push({ ...item, id: `w_${Date.now()}_${Math.random().toString(36).slice(2, 5)}` });
         Store.saveAll();
+        UI.toast(`Duplicated "${item.word}"!`, 'success');
         render();
       }
 
@@ -4378,56 +4605,39 @@
         render();
       }
 
-      function switchActiveWordSet(id) {
-        Store.state.activeWordSetId = id;
-        editingWordId = null;
-        Store.saveAll();
-        render();
-      }
-
-      function createNewWordSet() {
-        const count = Store.state.wordSets.length + 1;
-        const newSet = {
-          id: `ws_${Date.now()}`,
-          name: `Custom Word Set #${count}`,
-          items: []
-        };
-        Store.state.wordSets.push(newSet);
-        Store.state.activeWordSetId = newSet.id;
-        Store.saveAll();
-        render();
-        UI.toast(`Created "${newSet.name}"!`, 'success');
-      }
-
       function saveSentenceEntry() {
-        const rawText = document.getElementById('tc-sent-text')?.value.trim();
-        const hint = document.getElementById('tc-sent-hint')?.value.trim();
-        const difficulty = document.getElementById('tc-sent-diff')?.value || 'Normal';
-        if (!rawText || rawText.split(/\s+/).length < 2) {
-          UI.toast('Please enter a sentence with at least 2 words!', 'warn');
+        const textEl = document.getElementById('tc-sent-text');
+        const hintEl = document.getElementById('tc-sent-hint');
+        const diffEl = document.getElementById('tc-sent-diff');
+        const rawText = (textEl?.value || '').trim();
+        if (!rawText) {
+          UI.toast('Please enter a sentence first.', 'warn');
           return;
         }
-        const set = Store.getActiveSentenceSet();
+
+        const activeSet = Store.getActiveSentenceSet();
         if (editingSentenceId) {
-          const item = set.items.find((i) => i.id === editingSentenceId);
+          const item = activeSet.items.find((i) => i.id === editingSentenceId);
           if (item) {
             item.text = rawText;
-            item.hint = hint;
-            item.difficulty = difficulty;
-            item.image = draftSentenceImage;
+            item.hint = (hintEl?.value || '').trim();
+            item.difficulty = diffEl?.value || 'Normal';
+            item.image = draftSentenceImage || '';
           }
           editingSentenceId = null;
           UI.toast('Sentence updated!', 'success');
         } else {
-          set.items.push({
-            id: `s_${Date.now()}`,
+          activeSet.items.push({
+            id: `s_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
             text: rawText,
-            hint,
-            difficulty,
-            image: draftSentenceImage
+            hint: (hintEl?.value || '').trim(),
+            difficulty: diffEl?.value || 'Normal',
+            image: draftSentenceImage || ''
           });
-          UI.toast('Sentence added!', 'success');
+          UI.toast(`Sentence added (${activeSet.items.length} in set)!`, 'success');
         }
+
+        draftSentenceImage = '';
         Store.saveAll();
         render();
       }
@@ -4442,6 +4652,7 @@
 
       function cancelEditSentence() {
         editingSentenceId = null;
+        draftSentenceImage = '';
         render();
       }
 
@@ -4453,6 +4664,14 @@
         render();
       }
 
+      /* Set Management */
+      function switchActiveWordSet(id) {
+        Store.state.activeWordSetId = id;
+        editingWordId = null;
+        Store.saveAll();
+        render();
+      }
+
       function switchActiveSentenceSet(id) {
         Store.state.activeSentenceSetId = id;
         editingSentenceId = null;
@@ -4460,88 +4679,251 @@
         render();
       }
 
+      function createNewWordSet() {
+        const newSet = {
+          id: `ws_${Date.now()}`,
+          name: `Custom Word Set ${Store.state.wordSets.length + 1}`,
+          items: []
+        };
+        Store.state.wordSets.push(newSet);
+        Store.state.activeWordSetId = newSet.id;
+        Store.saveAll();
+        UI.toast(`Created "${newSet.name}"!`, 'success');
+        render();
+      }
+
       function createNewSentenceSet() {
-        const count = Store.state.sentenceSets.length + 1;
         const newSet = {
           id: `ss_${Date.now()}`,
-          name: `Custom Sentence Set #${count}`,
+          name: `Custom Sentence Set ${Store.state.sentenceSets.length + 1}`,
           items: []
         };
         Store.state.sentenceSets.push(newSet);
         Store.state.activeSentenceSetId = newSet.id;
         Store.saveAll();
-        render();
         UI.toast(`Created "${newSet.name}"!`, 'success');
-      }
-
-      function renameSet(type, id) {
-        const list = type === 'word' ? Store.state.wordSets : Store.state.sentenceSets;
-        const s = list.find((x) => x.id === id);
-        if (!s) return;
-        s.name = `${s.name} (Edited)`;
-        Store.saveAll();
         render();
-        UI.toast('Set renamed!', 'info');
       }
 
-      function duplicateSet(type, id) {
-        const list = type === 'word' ? Store.state.wordSets : Store.state.sentenceSets;
-        const s = list.find((x) => x.id === id);
-        if (!s) return;
-        const copy = JSON.parse(JSON.stringify(s));
-        copy.id = `${type}set_${Date.now()}`;
-        copy.name = `${s.name} (Copy)`;
+      function renameSet(kind, id) {
+        const list = kind === 'word' ? Store.state.wordSets : Store.state.sentenceSets;
+        const set = list.find((s) => s.id === id);
+        if (!set) return;
+        UI.modal({
+          title: 'Rename Set',
+          message: `<input id="modal-rename-input" type="text" value="${UI.escapeHTML(set.name)}" class="preserve-case w-full bg-white border-3 border-detBrown rounded-xl px-3 py-2 font-bold text-detNavy mt-2" />`,
+          icon: '✏️',
+          buttons: [
+            { label: 'Cancel', variant: 'secondary' },
+            {
+              label: 'Save Name',
+              variant: 'primary',
+              onClick: () => {
+                const val = (document.getElementById('modal-rename-input')?.value || '').trim();
+                if (val) {
+                  set.name = val;
+                  Store.saveAll();
+                  render();
+                }
+              }
+            }
+          ]
+        });
+      }
+
+      function duplicateSet(kind, id) {
+        const list = kind === 'word' ? Store.state.wordSets : Store.state.sentenceSets;
+        const set = list.find((s) => s.id === id);
+        if (!set) return;
+        const copy = JSON.parse(JSON.stringify(set));
+        copy.id = `${kind === 'word' ? 'ws' : 'ss'}_${Date.now()}`;
+        copy.name = `${set.name} (Copy)`;
+        copy.items = copy.items.map((it, idx) => ({ ...it, id: `${it.id}_copy_${idx}` }));
         list.push(copy);
         Store.saveAll();
+        UI.toast(`Duplicated "${set.name}"!`, 'success');
         render();
-        UI.toast(`Duplicated "${s.name}"!`, 'success');
       }
 
-      function deleteSet(type, id) {
-        if (type === 'word') {
+      function deleteSet(kind, id) {
+        if (kind === 'word') {
           if (Store.state.wordSets.length <= 1) return;
-          Store.state.wordSets = Store.state.wordSets.filter((x) => x.id !== id);
+          Store.state.wordSets = Store.state.wordSets.filter((s) => s.id !== id);
           if (Store.state.activeWordSetId === id) Store.state.activeWordSetId = Store.state.wordSets[0].id;
         } else {
           if (Store.state.sentenceSets.length <= 1) return;
-          Store.state.sentenceSets = Store.state.sentenceSets.filter((x) => x.id !== id);
+          Store.state.sentenceSets = Store.state.sentenceSets.filter((s) => s.id !== id);
           if (Store.state.activeSentenceSetId === id) Store.state.activeSentenceSetId = Store.state.sentenceSets[0].id;
         }
         Store.saveAll();
         render();
-        UI.toast('Set removed.', 'info');
       }
 
-      function exportJSON(scope) {
-        const payload = {
-          app: 'EnglishDetectives',
-          version: '2.0.0',
-          exportedAt: new Date().toISOString(),
-          scope
+      /* Image Upload, Clipboard Paste & URL Helpers */
+      let uploadTargetContext = 'word';
+
+      function triggerUpload(ctx) {
+        uploadTargetContext = ctx;
+        document.getElementById('hidden-image-upload').click();
+      }
+
+      async function processUploadedFiles(files, ctx) {
+        for (const file of files) {
+          try {
+            const dataUrl = await UI.compressImageFile(file, 420);
+            const cleanName = file.name.replace(/\.[^.]+$/, '') || 'Uploaded Image';
+            Store.state.imageGallery.unshift({
+              id: `img_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`,
+              name: cleanName,
+              url: dataUrl
+            });
+            if (ctx === 'word') {
+              draftWordImage = dataUrl;
+              const prev = document.getElementById('tc-word-img-preview');
+              if (prev) prev.src = dataUrl;
+            } else if (ctx === 'sentence') {
+              draftSentenceImage = dataUrl;
+              const prev = document.getElementById('tc-sent-img-preview');
+              if (prev) {
+                prev.src = dataUrl;
+                prev.classList.remove('opacity-40');
+              }
+            }
+          } catch (err) {
+            UI.toast(err.message || 'Could not load image', 'error');
+          }
+        }
+        await Store.saveAll();
+        if (ctx === 'gallery') render();
+        else UI.toast('Image ready!', 'success');
+      }
+
+      async function pasteFromClipboard(ctx) {
+        if (!navigator.clipboard || !navigator.clipboard.read) {
+          UI.toast('Press Ctrl+V (or Cmd+V / iPad Paste) directly on the screen to paste an image!', 'info');
+          return;
+        }
+        try {
+          const items = await navigator.clipboard.read();
+          let found = false;
+          for (const item of items) {
+            const imgType = item.types.find((t) => t.startsWith('image/'));
+            if (imgType) {
+              const blob = await item.getType(imgType);
+              const file = new File([blob], 'pasted-clue.png', { type: imgType });
+              await processUploadedFiles([file], ctx);
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            UI.toast('No image found in clipboard. Copy an image first or use Ctrl+V!', 'warn');
+          }
+        } catch (err) {
+          UI.toast('Clipboard read blocked by browser—try pressing Ctrl+V / Cmd+V directly!', 'info');
+        }
+      }
+
+      function applyImageUrl(ctx) {
+        const inputId = ctx === 'word' ? 'tc-word-url' : 'tc-gallery-url';
+        const url = (document.getElementById(inputId)?.value || '').trim();
+        if (!url) {
+          UI.toast('Please paste an image URL first.', 'warn');
+          return;
+        }
+        const testImg = new Image();
+        testImg.onload = () => {
+          Store.state.imageGallery.unshift({
+            id: `img_${Date.now()}`,
+            name: 'Imported Image',
+            url
+          });
+          if (ctx === 'word') {
+            draftWordImage = url;
+            const prev = document.getElementById('tc-word-img-preview');
+            if (prev) prev.src = url;
+          }
+          Store.saveAll();
+          UI.toast('Image URL added!', 'success');
+          if (ctx === 'gallery') render();
         };
+        testImg.onerror = () => {
+          UI.toast('Could not load image from that URL. Check the link or upload a file instead.', 'error');
+        };
+        testImg.src = url;
+      }
+
+      function selectDraftImage(ctx, url) {
+        if (ctx === 'word') {
+          draftWordImage = url;
+          const prev = document.getElementById('tc-word-img-preview');
+          if (prev) prev.src = url || PresetArt.magnifyingGlass;
+        } else if (ctx === 'sentence') {
+          draftSentenceImage = url;
+          const prev = document.getElementById('tc-sent-img-preview');
+          if (prev) {
+            prev.src = url || PresetArt.magnifyingGlass;
+            prev.classList.toggle('opacity-40', !url);
+          }
+        }
+      }
+
+      function handleGalleryDrop(ev) {
+        ev.preventDefault();
+        if (ev.dataTransfer?.files?.length) {
+          processUploadedFiles(Array.from(ev.dataTransfer.files), 'gallery');
+        }
+      }
+
+      function deleteGalleryImage(id) {
+        Store.state.imageGallery = Store.state.imageGallery.filter((i) => i.id !== id);
+        Store.saveAll();
+        render();
+      }
+
+      function applyPreset(level) {
+        Store.applyDifficultyPreset(level);
+        UI.toast(`Applied ${level.toUpperCase()} difficulty preset!`, 'success');
+        render();
+      }
+
+      /* JSON Export & Import */
+      function exportJSON(scope) {
+        let payload = {
+          app: 'ENGLISH_DETECTIVES',
+          version: 3,
+          exportedAt: new Date().toISOString()
+        };
+        let filename = 'english-detectives-backup.json';
 
         if (scope === 'word') {
-          payload.wordSet = Store.getActiveWordSet();
+          const set = Store.getActiveWordSet();
+          payload.type = 'wordSet';
+          payload.wordSet = set;
+          filename = `${set.name.replace(/[^a-z0-9_-]/gi, '_')}-words.json`;
         } else if (scope === 'sentence') {
-          payload.sentenceSet = Store.getActiveSentenceSet();
+          const set = Store.getActiveSentenceSet();
+          payload.type = 'sentenceSet';
+          payload.sentenceSet = set;
+          filename = `${set.name.replace(/[^a-z0-9_-]/gi, '_')}-sentences.json`;
         } else {
+          payload.type = 'allGameData';
           payload.wordSets = Store.state.wordSets;
           payload.sentenceSets = Store.state.sentenceSets;
           payload.imageGallery = Store.state.imageGallery;
           payload.settings = Store.state.settings;
         }
 
-        const jsonStr = JSON.stringify(payload, null, 2);
-        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `english-detectives-${scope}-${Date.now()}.json`;
+        a.download = filename;
         document.body.appendChild(a);
         a.click();
-        a.remove();
+        document.body.removeChild(a);
         URL.revokeObjectURL(url);
-        UI.toast('JSON exported successfully!', 'success');
+        UI.toast(`Exported ${filename}!`, 'success');
       }
 
       function handleJSONFileSelected(ev) {
@@ -4553,185 +4935,182 @@
         reader.onload = (e) => {
           try {
             const parsed = JSON.parse(e.target.result);
-            if (!parsed || typeof parsed !== 'object') throw new Error('Invalid JSON');
-
-            const words = [];
-            const sentences = [];
-            const images = [];
-
-            if (parsed.wordSet?.items) words.push(...parsed.wordSet.items);
-            if (Array.isArray(parsed.wordSets)) parsed.wordSets.forEach((ws) => ws.items && words.push(...ws.items));
-            if (Array.isArray(parsed.items) && parsed.items[0]?.word) words.push(...parsed.items);
-
-            if (parsed.sentenceSet?.items) sentences.push(...parsed.sentenceSet.items);
-            if (Array.isArray(parsed.sentenceSets)) parsed.sentenceSets.forEach((ss) => ss.items && sentences.push(...ss.items));
-            if (Array.isArray(parsed.items) && parsed.items[0]?.text) sentences.push(...parsed.items);
-
-            if (Array.isArray(parsed.imageGallery)) images.push(...parsed.imageGallery);
-
-            if (!words.length && !sentences.length && !images.length) {
-              UI.toast('No valid Detective words, sentences, or images found in JSON.', 'error');
-              return;
+            if (!parsed || typeof parsed !== 'object') {
+              throw new Error('Invalid JSON structure');
             }
-
-            pendingImportData = {
-              label: parsed.wordSet?.name || parsed.sentenceSet?.name || file.name,
-              wordCount: words.length,
-              sentenceCount: sentences.length,
-              imageCount: images.length,
-              words,
-              sentences,
-              images
-            };
-            render();
-            UI.toast('JSON file parsed! Choose how to import below.', 'info');
+            pendingImportData = parsed;
+            this.showImportSummary();
           } catch (err) {
-            UI.toast('Could not read JSON file. Please check its format.', 'error');
+            pendingImportData = null;
+            UI.toast('Invalid JSON file. Please select a valid English Detectives JSON export.', 'error');
           }
         };
         reader.readAsText(file);
       }
 
-      function commitImport(mode) {
+      function showImportSummary() {
+        const box = document.getElementById('tc-import-preview');
+        const sum = document.getElementById('tc-import-summary');
+        if (!box || !sum || !pendingImportData) return;
+
+        let desc = 'Valid English Detectives JSON file ready to import.';
+        if (pendingImportData.type === 'wordSet' && pendingImportData.wordSet) {
+          desc = `Word Set: "${pendingImportData.wordSet.name}" (${pendingImportData.wordSet.items?.length || 0} words)`;
+        } else if (pendingImportData.type === 'sentenceSet' && pendingImportData.sentenceSet) {
+          desc = `Sentence Set: "${pendingImportData.sentenceSet.name}" (${pendingImportData.sentenceSet.items?.length || 0} sentences)`;
+        } else if (pendingImportData.type === 'allGameData') {
+          desc = `Full Backup: ${pendingImportData.wordSets?.length || 0} word sets, ${pendingImportData.sentenceSets?.length || 0} sentence sets`;
+        }
+
+        sum.innerHTML = `<span class="preserve-case">${UI.escapeHTML(desc)}</span>`;
+        box.classList.remove('hidden');
+      }
+
+      function applyImport(mode) {
         if (!pendingImportData) return;
-        const { label, words, sentences, images } = pendingImportData;
 
-        if (words.length) {
-          const cleanWords = words.map((w, idx) => ({
-            id: `w_imp_${Date.now()}_${idx}`,
-            word: String(w.word ?? ''),
-            image: w.image || PresetArt.magnifyingGlass,
-            hint: String(w.hint ?? ''),
-            category: String(w.category ?? 'Imported')
-          }));
-
-          if (mode === 'new') {
-            const newSet = { id: `ws_${Date.now()}`, name: `${label} (Imported)`, items: cleanWords };
+        if (pendingImportData.type === 'allGameData') {
+          if (mode === 'replace') {
+            if (Array.isArray(pendingImportData.wordSets) && pendingImportData.wordSets.length) {
+              Store.state.wordSets = pendingImportData.wordSets;
+              Store.state.activeWordSetId = pendingImportData.wordSets[0].id;
+            }
+            if (Array.isArray(pendingImportData.sentenceSets) && pendingImportData.sentenceSets.length) {
+              Store.state.sentenceSets = pendingImportData.sentenceSets;
+              Store.state.activeSentenceSetId = pendingImportData.sentenceSets[0].id;
+            }
+            if (Array.isArray(pendingImportData.imageGallery)) {
+              Store.state.imageGallery = pendingImportData.imageGallery;
+            }
+          } else {
+            (pendingImportData.wordSets || []).forEach((ws) => {
+              Store.state.wordSets.push({
+                ...ws,
+                id: `ws_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`,
+                name: mode === 'new' ? `${ws.name} (Imported)` : ws.name
+              });
+            });
+            (pendingImportData.sentenceSets || []).forEach((ss) => {
+              Store.state.sentenceSets.push({
+                ...ss,
+                id: `ss_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`,
+                name: mode === 'new' ? `${ss.name} (Imported)` : ss.name
+              });
+            });
+          }
+        } else if (pendingImportData.type === 'wordSet' && pendingImportData.wordSet) {
+          const incomingItems = Array.isArray(pendingImportData.wordSet.items) ? pendingImportData.wordSet.items : [];
+          if (mode === 'replace') {
+            const active = Store.getActiveWordSet();
+            active.name = pendingImportData.wordSet.name || active.name;
+            active.items = incomingItems;
+          } else if (mode === 'append') {
+            const active = Store.getActiveWordSet();
+            active.items = [...active.items, ...incomingItems.map((it, i) => ({ ...it, id: `${it.id}_imp_${i}` }))];
+          } else {
+            const newSet = {
+              id: `ws_${Date.now()}`,
+              name: `${pendingImportData.wordSet.name || 'Imported Word Set'}`,
+              items: incomingItems
+            };
             Store.state.wordSets.push(newSet);
             Store.state.activeWordSetId = newSet.id;
-          } else if (mode === 'merge') {
-            Store.getActiveWordSet().items.push(...cleanWords);
-          } else if (mode === 'replace') {
-            Store.getActiveWordSet().items = cleanWords;
           }
-        }
-
-        if (sentences.length) {
-          const cleanSents = sentences.map((s, idx) => ({
-            id: `s_imp_${Date.now()}_${idx}`,
-            text: String(s.text ?? s.sentence ?? ''),
-            image: s.image || '',
-            hint: String(s.hint ?? ''),
-            difficulty: String(s.difficulty ?? 'Normal')
-          }));
-
-          if (mode === 'new') {
-            const newSet = { id: `ss_${Date.now()}`, name: `${label} (Imported)`, items: cleanSents };
+        } else if (pendingImportData.type === 'sentenceSet' && pendingImportData.sentenceSet) {
+          const incomingItems = Array.isArray(pendingImportData.sentenceSet.items) ? pendingImportData.sentenceSet.items : [];
+          if (mode === 'replace') {
+            const active = Store.getActiveSentenceSet();
+            active.name = pendingImportData.sentenceSet.name || active.name;
+            active.items = incomingItems;
+          } else if (mode === 'append') {
+            const active = Store.getActiveSentenceSet();
+            active.items = [...active.items, ...incomingItems.map((it, i) => ({ ...it, id: `${it.id}_imp_${i}` }))];
+          } else {
+            const newSet = {
+              id: `ss_${Date.now()}`,
+              name: `${pendingImportData.sentenceSet.name || 'Imported Sentence Set'}`,
+              items: incomingItems
+            };
             Store.state.sentenceSets.push(newSet);
             Store.state.activeSentenceSetId = newSet.id;
-          } else if (mode === 'merge') {
-            Store.getActiveSentenceSet().items.push(...cleanSents);
-          } else if (mode === 'replace') {
-            Store.getActiveSentenceSet().items = cleanSents;
           }
-        }
-
-        if (images.length) {
-          images.forEach((im, idx) => {
-            if (im.url) {
-              Store.state.imageGallery.unshift({
-                id: `img_imp_${Date.now()}_${idx}`,
-                name: String(im.name || 'Imported Image'),
-                url: im.url
-              });
-            }
-          });
         }
 
         pendingImportData = null;
         Store.saveAll();
+        UI.toast('Import completed successfully!', 'success');
         render();
-        UI.toast('Import completed!', 'success');
-      }
-
-      function initGlobalListeners() {
-        document.getElementById('hidden-image-upload')?.addEventListener('change', async (ev) => {
-          const files = Array.from(ev.target.files || []);
-          ev.target.value = '';
-          for (const file of files) {
-            try {
-              const dataUrl = await UI.compressImageFile(file);
-              applyNewDataUrl(uploadTarget, dataUrl, file.name.replace(/\.[^.]+$/, ''));
-            } catch (err) {
-              UI.toast(`Could not load "${file.name}".`, 'error');
-            }
-          }
-          if (files.length) UI.toast('Image uploaded!', 'success');
-        });
-
-        document.getElementById('hidden-json-import')?.addEventListener('change', handleJSONFileSelected);
-
-        document.addEventListener('paste', async (ev) => {
-          if (App.currentScreen !== 'TEACHER') return;
-          if (currentTab !== 'words' && currentTab !== 'sentences' && currentTab !== 'images') return;
-
-          const items = Array.from(ev.clipboardData?.items || []);
-          const imgItem = items.find((it) => it.type && it.type.startsWith('image/'));
-          if (imgItem) {
-            const file = imgItem.getAsFile();
-            if (file) {
-              try {
-                const dataUrl = await UI.compressImageFile(file);
-                applyNewDataUrl(currentTab === 'sentences' ? 'sentence' : currentTab === 'images' ? 'gallery' : 'word', dataUrl, 'Pasted Image');
-                UI.toast('Pasted image from clipboard!', 'success');
-              } catch (e) {
-                UI.toast('Could not process pasted image.', 'error');
-              }
-            }
-          }
-        });
       }
 
       return {
         switchTab,
         render,
-        triggerUpload,
-        selectDraftImage,
-        pasteFromClipboard,
-        applyImageUrl,
-        handleGalleryDrop,
-        deleteGalleryImage,
         saveWordEntry,
         editWord,
         cancelEditWord,
         duplicateWord,
         deleteWord,
-        switchActiveWordSet,
-        createNewWordSet,
         saveSentenceEntry,
         editSentence,
         cancelEditSentence,
         deleteSentence,
+        switchActiveWordSet,
         switchActiveSentenceSet,
+        createNewWordSet,
         createNewSentenceSet,
         renameSet,
         duplicateSet,
         deleteSet,
+        triggerUpload,
+        processUploadedFiles,
+        pasteFromClipboard,
+        applyImageUrl,
+        selectDraftImage,
+        handleGalleryDrop,
+        deleteGalleryImage,
+        applyPreset,
         exportJSON,
-        commitImport,
-        initGlobalListeners
+        handleJSONFileSelected,
+        showImportSummary,
+        applyImport
       };
     })();
 
     /* =========================================================================
-     * 9. BOOTSTRAP INITIALIZATION
+     * 9. BOOTSTRAP & GLOBAL LISTENERS
      * ========================================================================= */
     window.addEventListener('DOMContentLoaded', async () => {
       await Store.loadAll();
       AudioFX.setMuted(!Store.state.settings.soundEnabled);
-      TeacherUI.initGlobalListeners();
       App.refreshMenuBadge();
-      SetupUI.refresh();
+
+      document.getElementById('hidden-image-upload')?.addEventListener('change', (e) => {
+        if (e.target.files?.length) {
+          TeacherUI.processUploadedFiles(Array.from(e.target.files), uploadTargetContext);
+          e.target.value = '';
+        }
+      });
+
+      document.getElementById('hidden-json-import')?.addEventListener('change', (e) => {
+        TeacherUI.handleJSONFileSelected(e);
+      });
+
+      window.addEventListener('paste', (e) => {
+        if (App.currentScreen !== 'TEACHER') return;
+        const items = e.clipboardData?.items;
+        if (!items) return;
+        const imageFiles = [];
+        for (const item of items) {
+          if (item.type && item.type.startsWith('image/')) {
+            const file = item.getAsFile();
+            if (file) imageFiles.push(file);
+          }
+        }
+        if (imageFiles.length > 0) {
+          const ctx = currentTab === 'sentences' ? 'sentence' : currentTab === 'images' ? 'gallery' : 'word';
+          TeacherUI.processUploadedFiles(imageFiles, ctx);
+        }
+      });
     });
   </script>
 </body>
